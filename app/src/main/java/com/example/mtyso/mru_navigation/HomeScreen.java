@@ -12,5 +12,6 @@ public class HomeScreen extends AppCompatActivity {
         //lets gooooo
         //Marc test
         // Test branch push
+        // Merging with master
     }
 }
