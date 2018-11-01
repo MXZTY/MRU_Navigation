@@ -10,6 +10,6 @@ public class HomeScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         //lets gooooo
-
+        //Marc test
     }
 }
