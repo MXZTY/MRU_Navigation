@@ -13,7 +13,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -85,7 +84,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 circleOptions.radius(0.5);
                 circleOptions.fillColor(Color.BLUE);
                 circleOptions.strokeWidth(6);
-                
+
                 mMap.setIndoorEnabled(true);
                 mMap.addCircle(circleOptions);
 
