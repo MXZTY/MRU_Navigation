@@ -23,9 +23,13 @@
         android:id="@+id/MRU_Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mru_logo_png" />
+        app:srcCompat="@drawable/mru_logo_png"
+        android:contentDescription="mruLogo" />
 
 
 </android.support.constraint.ConstraintLayout>

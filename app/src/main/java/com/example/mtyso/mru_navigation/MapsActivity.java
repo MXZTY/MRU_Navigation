@@ -14,6 +14,11 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,15 +35,50 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private LocationListener locationListener;
 
+    //widgets
+    private EditText mSearchText;
+
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        mSearchText = (EditText) findViewById(R.id.input_search);
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+    }
+
+    private void init(){
+        Log.d("init", "Initializing");
+        mSearchText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if(actionId == EditorInfo.IME_ACTION_SEARCH
+                        || actionId == EditorInfo.IME_ACTION_DONE
+                        || event.getAction() == KeyEvent.ACTION_DOWN
+                        || event.getAction() == KeyEvent.KEYCODE_ENTER) {
+
+                    //implement method for getting classroom input from user.
+                    getClassroomInput();
+                }
+
+
+                return false;
+            }
+        }
+        );
+    }
+
+    private void getClassroomInput(){
+        Log.d("locatingClassroom", "Locating Classroom");
+        String searchString = mSearchText.getText().toString();
+        Log.d("searchString: ", searchString);
 
     }
 
@@ -90,7 +130,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addCircle(circleOptions);
 
 //                mMap.addMarker(new MarkerOptions().position(latLng).title("Current Location"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float)20));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float)19));
+
+                init();
+
             }
 
             @Override
@@ -107,6 +150,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onProviderDisabled(String provider) {
 
             }
+
         };
 
         if (Build.VERSION.SDK_INT < 23){
