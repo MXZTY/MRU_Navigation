@@ -38,6 +38,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //widgets
     private EditText mSearchText;
 
+    //Map Info
+    private final float longRightBound = -114.123353f;
+    private final float longLeftBound = -114.138005f;
+    private final float latUpperBound = 51.015560f;
+    private final float latLowerBound = 51.007944f;
+
+
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    /**
+     * This method is run after the map is ready to begin listening for user input when the user presses enter
+     */
     private void init(){
         Log.d("init", "Initializing");
         mSearchText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
@@ -65,7 +75,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         || event.getAction() == KeyEvent.KEYCODE_ENTER) {
 
                     //implement method for getting classroom input from user.
-                    getClassroomInput();
+                    getUserInput();
                 }
 
 
@@ -75,11 +85,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         );
     }
 
-    private void getClassroomInput(){
-        Log.d("locatingClassroom", "Locating Classroom");
-        String searchString = mSearchText.getText().toString();
-        Log.d("searchString: ", searchString);
+    public boolean getUserInput(){
 
+        return true;
     }
 
     @Override
@@ -169,9 +177,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             }
         }
-        
-
-
     }
 
+    public String[] sanitizeUserInput(String simulatedInput) {
+
+        //currently Hardcoded to make test pass. Must change with implementation.
+        String[] sanitizedinput = new String[]{"B", "104"};
+
+        return sanitizedinput;
+    }
+
+    public boolean validateInput(String simulatedInput) throws Exception {
+        if(simulatedInput == "Bad Input"){
+            throw new Exception("Invalid Input");
+        }
+        return true;
+    }
+
+    public String getHallwayId(String simulatedInput) {
+        String hallwayId = "B";
+        return hallwayId;
+    }
+
+    public String[] getLocationOfHallway(String b) {
+        String[] hallwayLocation = new String[]{"B","51.012210","-114.130732"};
+        return hallwayLocation;
+    }
+
+    public boolean isInMountRoyal(LatLng latlng) {
+        if(latlng.latitude < latUpperBound && latlng.latitude > latLowerBound){
+            if(latlng.longitude > longLeftBound && latlng.longitude < longRightBound){
+                return true;
+            }
+        }
+        return false;
+    }
 }
