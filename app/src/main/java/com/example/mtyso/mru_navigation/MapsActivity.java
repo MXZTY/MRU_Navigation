@@ -59,37 +59,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    /**
-     * This method is run after the map is ready to begin listening for user input when the user presses enter
-     */
-    private void init(){
-        Log.d("init", "Initializing");
-        mSearchText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
-                if(actionId == EditorInfo.IME_ACTION_SEARCH
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || event.getAction() == KeyEvent.ACTION_DOWN
-                        || event.getAction() == KeyEvent.KEYCODE_ENTER) {
-
-                    //implement method for getting classroom input from user.
-                    getUserInput();
-                }
-
-
-                return false;
-            }
-        }
-        );
-    }
-
-    public boolean getUserInput(){
-
-        return true;
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -179,31 +148,111 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    /**
+     * This method is run after the map is ready to begin listening for user input when the user presses enter
+     */
+    private void init(){
+        Log.d("init", "Initializing");
+        mSearchText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_SEARCH
+                    || actionId == EditorInfo.IME_ACTION_DONE
+                    || event.getAction() == KeyEvent.ACTION_DOWN
+                    || event.getAction() == KeyEvent.KEYCODE_ENTER) {
+
+                    //Call getUserInput to process the user input recorded in mSearchText global variable.
+                    getUserInput();
+                }
+
+            return false;
+            }
+                                               }
+        );
+    }
+
+    /**
+     * Method for controling the processing and validation of the users input
+     * @return true by default.
+     */
+    public boolean getUserInput(){
+        System.out.println(mSearchText);
+
+        //Call Sanitize user input to separate the key elements of the search string.
+            //If the user input is only 1-2 characters long (ie just building code B) call getHallwayId instead
+
+        //Call validate user input to make sure that the sanitized hallway code exists is a valid search string.
+
+        //Call get Location of hallway
+
+        //Validate the location is within MRU
+
+
+        return true;
+    }
+
+    /**
+     * This method will take in a string (B204) and separate the different elements and return them in an array.
+     *
+     * @param simulatedInput (B204)
+     * @return ["B", "204"]
+     */
     public String[] sanitizeUserInput(String simulatedInput) {
 
+        //Sanitize the users input using a regular expression. no need to validate in this method as validation will handle it.
         //currently Hardcoded to make test pass. Must change with implementation.
         String[] sanitizedinput = new String[]{"B", "104"};
 
         return sanitizedinput;
     }
 
+    /**
+     * This method ensures that the user input is a valid hallway code for MRU
+     * @param simulatedInput
+     * @return true if valid input
+     * @throws Exception e if invalid input.
+     */
     public boolean validateInput(String simulatedInput) throws Exception {
+
+        //method must take in input and test it against a list of hallway codes to make sure it is valid.
+        // if the input is invalid, it must throw an exception e of invalid input.
+
         if(simulatedInput == "Bad Input"){
             throw new Exception("Invalid Input");
         }
         return true;
     }
 
+    /**
+     * This method will return only the hallway code and be called if the input string is only 1-2 characters long.
+     * @param simulatedInput
+     * @return hallway id
+     */
     public String getHallwayId(String simulatedInput) {
+        // probably dont even need this method and can reuse sanitization to return only the hallway code.
+
+        //This method must call the validation method to ensure the input contains a valid hallway code.
         String hallwayId = "B";
         return hallwayId;
     }
 
+    /**
+     * Get the location data of a hallway code that is passed in.
+     * @param b hallway code
+     * @return hallway location array
+     */
     public String[] getLocationOfHallway(String b) {
+
+        //this method will be called by the userInput method and return the hallway location
         String[] hallwayLocation = new String[]{"B","51.012210","-114.130732"};
         return hallwayLocation;
     }
 
+    /**
+     * Veryfies that the location attached to the hallway/classroom is within MRU campus grounds.
+     * @param latlng
+     * @return
+     */
     public boolean isInMountRoyal(LatLng latlng) {
         if(latlng.latitude < latUpperBound && latlng.latitude > latLowerBound){
             if(latlng.longitude > longLeftBound && latlng.longitude < longRightBound){
