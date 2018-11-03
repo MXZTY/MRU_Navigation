@@ -44,7 +44,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_magnify" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\Connor Beauchamp\Desktop\Icons\2x\baseline_my_location_black_24dp.png" />
+                                      <entry key="outputName" value="ic_myLocation" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="000000" />
                                     </map>

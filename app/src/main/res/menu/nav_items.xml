@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:icon="@drawable/common_google_signin_btn_icon_disabled"
+        android:icon="@drawable/ic_explore"
         android:title="@string/nav_Explore" />
     <item
-        android:icon="@drawable/baseline_history_black_24dp"
+        android:icon="@drawable/ic_history"
         android:title="@string/nav_history" />
     <item
         android:layout_width="match_parent"
-        android:icon="@drawable/common_google_signin_btn_icon_disabled"
+        android:icon="@drawable/ic_myLocation"
         android:title="@string/nav_myLocation" />
 
 
