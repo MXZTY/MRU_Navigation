@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hallwayLocations">
+        <item>{"hallID":"A","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"hallID":"B","lat":"51.012434","lng":"-114.130541"}</item>
+        <item>{"hallID":"C","lat":"51.0121996","lng":"-114.1313158"}</item>
+        <item>{"hallID":"D","lat":"51.0123245","lng":"-114.1316719"}</item>
+        <item>{"hallID":"E","lat":"51.0119611","lng":"-114.1320615"}</item>
+        <item>{"hallID":"F","lat":"51.0123726","lng":"-114.1321011"}</item>
+        <item>{"hallID":"G","lat":"51.0129634","lng":"-114.1315663"}</item>
+        <item>{"hallID":"H","lat":"51.0125063","lng":"-114.1319602"}</item>
+        <item>{"hallID":"I","lat":"51.0121855","lng":"-114.1327585"}</item>
+        <item>{"hallID":"J","lat":"51.0130598","lng":"-114.1332396"}</item>
+        <item>{"hallID":"K","lat":"51.0132223","lng":"-114.1329748"}</item>
+        <item>{"hallID":"M","lat":"51.0129179","lng":"-114.1322207"}</item>
+        <item>{"hallID":"N","lat":"51.0132630","lng":"-114.1322040"}</item>
+        <item>{"hallID":"O","lat":"51.0134167","lng":"-114.1318496"}</item>
+        <item>{"hallID":"Q","lat":"51.0122429","lng":"-114.1314007"}</item>
+        <item>{"hallID":"R","lat":"51.0129774","lng":"-114.1321121"}</item>
+        <item>{"hallID":"S","lat":"51.0124112","lng":"-114.1331019"}</item>
+        <item>{"hallID":"T","lat":"51.0135849","lng":"-114.1316468"}</item>
+        <item>{"hallID":"U","lat":"51.0127983","lng":"-114.1327216"}</item>
+        <item>{"hallID":"V","lat":"51.0132010","lng":"-114.1320578"}</item>
+        <item>{"hallID":"W","lat":"51.0128162","lng":"-114.1331977"}</item>
+        <item>{"hallID":"X","lat":"51.0133800","lng":"-114.1325912"}</item>
+        <item>{"hallID":"Y","lat":"51.0132307","lng":"-114.1330673"}</item>
+        <item>{"hallID":"Z","lat":"51.0137926","lng":"-114.1326311"}</item>
+        <item>{"hallID":"EB","lat":"51.010972","lng":"-114.131208"}</item>
+        <item>{"hallID":"EA","lat":"51.012276","lng":"-114.129124"}</item>
+        <item>{"hallID":"EC","lat":"51.011072","lng":"-114.129473"}</item>
+        <item>{"hallID":"ED","lat":"51.0114674","lng":"-114.1285921"}</item>
+        <item>{"hallID":"EL","lat":"51.0121927","lng":"-114.1279168"}</item>
+    </string-array>
+
+    <string-array name="poi">
+        <item>{"name":"Triple Gymnasium","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Aquatic Center","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Fitness Center","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Recreation Customer Service","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Recreation Entrance","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Running Track","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Wyckham House","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Digital Print Center","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Main Street","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Registrars Office,"lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Admissions and Recruitment","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Kerby Hall","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Event and Theatre Services","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Ross Glen Hall","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Atelier","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Box Office","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Bella Concert Hall","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Conservatory Services","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Parking Office","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Bookstore","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Student Digital Print Center","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Bisset School Of Business","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Faculty Of Arts","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Recreation Center","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"East Entrance","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Roderick Mah Center for Continuous Learning","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Taylor Center for the Performing Arts","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Riddel Library and Learning Center","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"West Entrance","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Wellness Center","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Child Care Center","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Leacock and Wright Theaters","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"The Table","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Security Office","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"TransAlta Pavilion","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Student Learning Services","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Lincoln Park Room","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Department of Education","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Continuing Education Customer Service","lat":"51.011502","longitude":"-114.130802"}</item>
+    </string-array>
+
+    <!--Pick-up/Drop-off zone-->
+    <!--Zone 3-->
+    <!--Zone 4-->
+    <!--Zone ED-->
+    <!--Zone 7-->
+    <!--Zone 8-->
+    <!--Zone 9-->
+
+    <!--Gated Parking Lots-->
+    <!--Lot 3-->
+    <!--Lot 5-->
+
+    <!--Visitor Parking-->
+    <!--Lot 2, Accessible-->
+    <!--Lot 6A-->
+    <!--East Gate Parkade, Accessible-->
+    <!--Lot 7, Accessible-->
+
+    <!--Permit Parking Lots-->
+    <!--Lot 1, Accessible-->
+    <!--Lot 4, Accessible-->
+    <!--Lot 6, Accessible-->
+    <!--Lot 8-->
+    <!--Lot 9-->
+
+    <!--Car2Go-->
+    <!--Zone West-->
+    <!--Zone 1-->
+    <!--Zone 4-->
+
+    <!--Day Parking Lots-->
+    <!--Lot A, Paystation-->
+    <!--Lot B-->
+
+    <!--Pay Stations-->
+    <!--Pay A-->
+    <!--Pay B-->
+    <!--Pay 7-->
+    <!--Pay 6A-->
+    <!--Pay Recreation Entrance-->
+    <!--Pay West Gate Entrance-->
+
+</resources>
