@@ -72,6 +72,8 @@
         <item>{"name":"Lincoln Park Room","lat":"51.011502","longitude":"-114.130802"}</item>
         <item>{"name":"Department of Education","lat":"51.011502","longitude":"-114.130802"}</item>
         <item>{"name":"Continuing Education Customer Service","lat":"51.011502","longitude":"-114.130802"}</item>
+        <item>{"name":"Triple Gymnasium","lat":"51.011502","longitude":"-114.130802"}</item>
+
     </string-array>
 
     <!--Pick-up/Drop-off zone-->
