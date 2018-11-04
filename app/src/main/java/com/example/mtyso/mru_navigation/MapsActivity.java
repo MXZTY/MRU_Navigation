@@ -3,6 +3,7 @@ package com.example.mtyso.mru_navigation;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
@@ -27,6 +28,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -34,6 +36,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
+    private boolean focus = true;
 
     //widgets
     private EditText mSearchText;
@@ -82,10 +85,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.style_map));
+
+            if (!success) {
+                Log.e("parseError", "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e("no style", "Can't find style. Error: ", e);
+        }
 
         locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
@@ -95,16 +108,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.center(latLng);
-                circleOptions.radius(0.5);
-                circleOptions.fillColor(Color.BLUE);
+                circleOptions.radius(1);
+                circleOptions.fillColor(Color.RED);
                 circleOptions.strokeWidth(6);
 
                 mMap.setIndoorEnabled(true);
                 mMap.addCircle(circleOptions);
 
-//                mMap.addMarker(new MarkerOptions().position(latLng).title("Current Location"));
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float)19));
-
+                if(focus) {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) 19));
+                }
                 init();
 
             }
@@ -162,7 +175,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     try {
                         if(validate.getUserInput()) {
                             System.out.println("YAYYYYYYYYYYYY");
+                            focus = false;
+                            System.out.println(validate.getFoundLocation());
+
                             mMap.addMarker(new MarkerOptions().position(validate.getFoundLocation()).title(getString(R.string.classroom)));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(validate.getFoundLocation(), (float)19));
                         } else {
                             //should display error somehow (red outline or something)
                         }

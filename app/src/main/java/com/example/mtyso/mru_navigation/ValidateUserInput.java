@@ -1,7 +1,5 @@
 package com.example.mtyso.mru_navigation;
 
-import android.util.Log;
-
 import com.google.android.gms.maps.model.LatLng;
 
 class ValidateUserInput {
@@ -11,13 +9,13 @@ class ValidateUserInput {
     private boolean isHallway = false;
 
     //LocationInfo
-    LocationData locations;
+    LocationServices locations;
 
     private LatLng foundLocation;
 
     public ValidateUserInput(String searchText){
         this.mSearchText = searchText;
-        this.locations = new LocationData();
+        this.locations = new LocationServices();
     }
 
     /**
@@ -29,17 +27,15 @@ class ValidateUserInput {
         String userInput = mSearchText;
         String[] sanitizedResults = new String[2];
 
-        if(userInput.length() > 1){
+        if(userInput.length() >= 1){
             String[] location;
             //Call Sanitize user input to separate the key elements of the search string.
             sanitizedResults = sanitizeUserInput(userInput);
             try {
-                //Call validate user input to make sure that the sanitized hallway code exists is a valid search string.
-                boolean isValid = validateInput(sanitizedResults);
-                if(!isValid){
+                //Call validate user input to make sure that the sanitized hallway code exists is a valid search strings
+                if(!validateInput(sanitizedResults)){
                     throw new Exception("Input is not a valid mru location");
-                }
-                else {
+                } else {
                     if(this.isHallway) {
                         location = locations.getLocationOfHallway(sanitizedResults[0]);
                     } else{
@@ -49,6 +45,7 @@ class ValidateUserInput {
                     return locations.isInMountRoyal(this.foundLocation);
                 }
             } catch (Exception e) {
+                //do nothing
                 e.printStackTrace();
             }
         } else {
@@ -69,7 +66,7 @@ class ValidateUserInput {
 
         //Sanitize the users input using a regular expression. no need to validate in this method as validation will handle it.
         //currently Hardcoded to make test pass. Must change with implementation.
-        String[] sanitizedinput = new String[]{"EB", ""};
+        String[] sanitizedinput = new String[]{input, ""};
 
         return sanitizedinput;
     }

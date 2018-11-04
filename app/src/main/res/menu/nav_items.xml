@@ -9,7 +9,7 @@
         android:title="@string/nav_history" />
     <item
         android:layout_width="match_parent"
-        android:icon="@drawable/ic_myLocation"
+        android:icon="@drawable/ic_mylocation"
         android:title="@string/nav_myLocation" />
 
 

@@ -1,23 +1,17 @@
 package com.example.mtyso.mru_navigation;
 
-import android.util.Log;
-import android.widget.EditText;
-
 import com.google.android.gms.maps.model.LatLng;
-
-import junit.framework.AssertionFailedError;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static java.util.regex.Pattern.matches;
 import static org.junit.Assert.*;
 
 public class TestSearchBarFunctionality {
 
     //classes involved with testing this functional requirement.
     private MapsActivity activity;
-    private LocationData locationData;
+    private LocationServices locationData;
     private ValidateUserInput validateUserInput;
 
     //resources to use for test
@@ -27,7 +21,7 @@ public class TestSearchBarFunctionality {
     @Before
     public void setUp() throws Exception {
 
-        this.locationData = new LocationData();
+        this.locationData = new LocationServices();
         this.activity = new MapsActivity();
         this.simulatedInput = "B104";
         this.validateUserInput = new ValidateUserInput(this.simulatedInput);
