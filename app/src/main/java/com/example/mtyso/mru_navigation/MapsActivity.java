@@ -31,12 +31,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private boolean focus = true;
+    private HashTable hallwayTable = new HashTable();
 
     //widgets
     private EditText mSearchText;
@@ -47,6 +54,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Build an array of hallways from the stored json strings.
+        String[] array;
+        array = getResources().getStringArray(R.array.hallwayLocations);
+
+        // for each json string, parse the string and create a hallway object.
+        for(String jsonStr : array){
+            try {
+                JSONObject obj = new JSONObject(jsonStr);
+                System.out.println(obj.get("name"));
+                Hallway hall = new Hallway(obj.get("name").toString(), new LatLng((double)obj.get("lat"), (double)obj.get("lng")));
+                // add the hallway object to the hash table.
+                hallwayTable.add(hall);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
@@ -92,7 +120,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             boolean success = googleMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
                             this, R.raw.style_map));
-
             if (!success) {
                 Log.e("parseError", "Style parsing failed.");
             }
@@ -171,20 +198,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     || event.getAction() == KeyEvent.KEYCODE_ENTER) {
 
                     //Call getUserInput to process the user input recorded in mSearchText global variable.
-                    validate = new ValidateUserInput( String.valueOf(mSearchText.getText()) );
+                    validate = new ValidateUserInput( String.valueOf(mSearchText.getText()), hallwayTable );
                     try {
                         if(validate.getUserInput()) {
-                            System.out.println("YAYYYYYYYYYYYY");
                             focus = false;
-                            System.out.println(validate.getFoundLocation());
-
                             mMap.addMarker(new MarkerOptions().position(validate.getFoundLocation()).title(getString(R.string.classroom)));
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(validate.getFoundLocation(), (float)19));
                         } else {
                             //should display error somehow (red outline or something)
                         }
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        System.out.println(e.getMessage());
                     }
                 }
 
