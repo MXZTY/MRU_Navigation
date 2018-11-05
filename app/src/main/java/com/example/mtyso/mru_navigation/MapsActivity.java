@@ -2,6 +2,7 @@ package com.example.mtyso.mru_navigation;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -17,7 +18,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -78,7 +81,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
-
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -196,9 +198,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     || actionId == EditorInfo.IME_ACTION_DONE
                     || event.getAction() == KeyEvent.ACTION_DOWN
                     || event.getAction() == KeyEvent.KEYCODE_ENTER) {
-
                     //Call getUserInput to process the user input recorded in mSearchText global variable.
-                    validate = new ValidateUserInput( String.valueOf(mSearchText.getText()), hallwayTable );
+                    validate = new ValidateUserInput( String.valueOf(mSearchText.getText()).toUpperCase(), hallwayTable );
                     try {
                         if(validate.getUserInput()) {
                             focus = false;
@@ -216,6 +217,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
+
+//    public void goToMyLocation(){
+//        mMap.moveCamera(locationListener.onLocationChanged(locationManager.getLastKnownLocation()););
+//    }
 
 
 }

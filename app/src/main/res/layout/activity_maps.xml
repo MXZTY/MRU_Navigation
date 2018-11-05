@@ -31,6 +31,7 @@
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/ic_magnify"
                 android:contentDescription="@string/ic_magnify" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
