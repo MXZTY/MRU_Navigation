@@ -7,15 +7,17 @@ class ValidateUserInput {
     //User input
     private String mSearchText;
     private boolean isHallway = false;
+    private HashTable table;
 
     //LocationInfo
     LocationServices locations;
 
     private LatLng foundLocation;
 
-    public ValidateUserInput(String searchText){
+    public ValidateUserInput(String searchText, HashTable table){
         this.mSearchText = searchText;
-        this.locations = new LocationServices();
+        this.locations = new LocationServices(table);
+        this.table = table;
     }
 
     /**
@@ -28,7 +30,7 @@ class ValidateUserInput {
         String[] sanitizedResults = new String[2];
 
         if(userInput.length() >= 1){
-            String[] location;
+            LocationInstance location;
             //Call Sanitize user input to separate the key elements of the search string.
             sanitizedResults = sanitizeUserInput(userInput);
             try {
@@ -41,12 +43,12 @@ class ValidateUserInput {
                     } else{
                         location = locations.getLocationOfClassroom(sanitizedResults);
                     }
-                    this.foundLocation = new LatLng(Float.valueOf(location[1]),Float.valueOf(location[2]));
+                    this.foundLocation = location.getLocation();
                     return locations.isInMountRoyal(this.foundLocation);
                 }
             } catch (Exception e) {
                 //do nothing
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         } else {
             // If no input is given throw an exception to be handled/ignored.

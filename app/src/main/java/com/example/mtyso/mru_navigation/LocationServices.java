@@ -15,8 +15,8 @@ public class LocationServices {
     // this.mruHallways = new String[]{"A","B","C","D","E","F","G","H","I","J","K","M","N","O","Q","R","S","T","U","V","W","X","Y","Z","EA","EB","EC","ED","EL"};
     //the below needs refinement and is temporary
 
-    public LocationServices(){
-        this.handle = new DataHandler();
+    public LocationServices(HashTable table){
+        this.handle = new DataHandler(table);
     }
 
     /**
@@ -42,7 +42,7 @@ public class LocationServices {
      */
     public boolean validateHallway(String input) {
 
-       return handle.findHallway(input, 0);
+       return handle.findHallway(input);
     }
 
     /**
@@ -52,7 +52,7 @@ public class LocationServices {
      * @return
      */
     public boolean validateClassroom(String[] sanitizedInput) throws Exception {
-        return handle.findClassroom(sanitizedInput, 0);
+        return handle.findClassroom(sanitizedInput);
     }
 
 
@@ -62,8 +62,8 @@ public class LocationServices {
      * @param sanitizedInput
      * @return
      */
-    public String[] getLocationOfClassroom(String[] sanitizedInput) {
-        return handle.getClassroomLocation(sanitizedInput, 0);
+    public LocationInstance getLocationOfClassroom(String[] sanitizedInput) {
+        return handle.getClassroomLocation(sanitizedInput);
     }
 
 
@@ -73,9 +73,8 @@ public class LocationServices {
      * @param b hallway code
      * @return hallway location array
      */
-    public String[] getLocationOfHallway(String b) {
-        System.out.println("something wrong before this");
-        return handle.getHallwayLocation(b, 0);
+    public LocationInstance getLocationOfHallway(String b) {
+        return handle.getHallwayLocation(b);
 
     }
 
