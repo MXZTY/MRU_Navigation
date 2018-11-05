@@ -41,7 +41,6 @@ public class LocationServices {
      * @return true if valid input
      */
     public boolean validateHallway(String input) {
-
        return handle.findHallway(input);
     }
 
