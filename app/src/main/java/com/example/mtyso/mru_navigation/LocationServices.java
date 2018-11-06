@@ -60,9 +60,9 @@ public class LocationServices {
         return false;
     }
 
-    public void addLocation(LocationInstance location){
-        handle.add(location.getName(), location);
-    }
+//    private void addLocation(LocationInstance location){
+//        handle.add(location.getName().toLowerCase(), location);
+//    }
 
     public LocationInstance getLocation(String userInput) throws Exception {
        if(verifyLocation(userInput)){
@@ -78,5 +78,14 @@ public class LocationServices {
 
     public void printTable() {
         handle.printMap();
+    }
+
+    public long getSize() {
+        return handle.size();
+    }
+
+    public String formatText(String textToFormat) {
+        String formattedString = "";
+        return formattedString;
     }
 }

@@ -107,4 +107,7 @@ public class DataHandler1 implements Serializable {
         return hashVal;
     }
 
+    public long size() {
+        return map.size();
+    }
 }
