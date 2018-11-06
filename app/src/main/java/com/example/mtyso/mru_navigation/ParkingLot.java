@@ -2,16 +2,20 @@ package com.example.mtyso.mru_navigation;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class PointOfInterest implements LocationInstance {
+public class ParkingLot implements LocationInstance {
 
     private String id;
     private String name;
     private LatLng location;
+    private boolean isPaidLot;
+    private boolean isAccesible;
 
-    public PointOfInterest(String name, LatLng storedLocation, String id ){
+    public ParkingLot(String name, LatLng storedLocation,String id, boolean paidLot, boolean accessibleParking ){
         this.name = name;
         this.location = storedLocation;
         this.id = id;
+        this.isPaidLot = paidLot;
+        this.isAccesible = accessibleParking;
     }
 
     /**
@@ -21,7 +25,7 @@ public class PointOfInterest implements LocationInstance {
      */
     @Override
     public LatLng getLocation() {
-        return location;
+        return null;
     }
 
     /**
@@ -31,7 +35,7 @@ public class PointOfInterest implements LocationInstance {
      */
     @Override
     public double getLatitude() {
-        return location.latitude;
+        return 0;
     }
 
     /**
@@ -41,7 +45,7 @@ public class PointOfInterest implements LocationInstance {
      */
     @Override
     public double getLongitude() {
-        return location.longitude;
+        return 0;
     }
 
     /**
@@ -51,7 +55,7 @@ public class PointOfInterest implements LocationInstance {
      */
     @Override
     public String getName() {
-        return name;
+        return null;
     }
 
     /**
@@ -61,6 +65,15 @@ public class PointOfInterest implements LocationInstance {
      */
     @Override
     public String getID() {
-        return id;
+        return null;
     }
+
+    public boolean isPaidLot(){
+        return this.isPaidLot;
+    }
+
+    public boolean isAccesible(){
+        return this.isAccesible;
+    }
+
 }

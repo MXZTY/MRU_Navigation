@@ -4,13 +4,14 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class Hallway implements LocationInstance {
 
-    private int id;
+    private String id;
     private String name;
     private LatLng location;
 
-    public Hallway(String name, LatLng storedLocation ){
+    public Hallway(String name, LatLng storedLocation, String id ){
         this.name = name;
         this.location = storedLocation;
+        this.id = id;
     }
 
     /**
@@ -59,13 +60,9 @@ public class Hallway implements LocationInstance {
      * @return
      */
     @Override
-    public int getID() {
+    public String getID() {
         return this.id;
     }
 
-    @Override
-    public void setID(int index) {
-        this.id = index;
-    }
 
 }

@@ -32,7 +32,7 @@ public interface LocationInstance {
      * This method is used to get the ID of the location instance.
      * @return
      */
-    int getID();
+    String getID();
 
-    void setID(int index);
+
 }

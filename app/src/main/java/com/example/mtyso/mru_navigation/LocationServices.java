@@ -2,6 +2,7 @@ package com.example.mtyso.mru_navigation;
 
 import com.google.android.gms.maps.model.LatLng;
 
+
 public class LocationServices {
 
     //Map Info
@@ -9,18 +10,43 @@ public class LocationServices {
     private final float longLeftBound = -114.138005f;
     private final float latUpperBound = 51.015560f;
     private final float latLowerBound = 51.007944f;
-    private DataHandler handle;
+    private DataHandler1 handle;
 
     //todo - need to get correct location data for all of the hallways listed below.
     // this.mruHallways = new String[]{"A","B","C","D","E","F","G","H","I","J","K","M","N","O","Q","R","S","T","U","V","W","X","Y","Z","EA","EB","EC","ED","EL"};
     //the below needs refinement and is temporary
 
-    public LocationServices(HashTable table){
-        this.handle = new DataHandler(table);
+    public LocationServices(){
+        this.handle = DataHandler1.getInstance();
+    }
+
+    public void buildTable(String[] arrayToAdd){
+        handle.buildTable(arrayToAdd);
     }
 
     /**
-     * todo finish after other methods are completed
+     * Method for controling the processing and validation of the users input
+     * @return true by default.
+     */
+    public boolean validateUserInput(String mSearchText) throws Exception {
+        System.out.println(mSearchText);
+        mSearchText = mSearchText.toUpperCase();
+
+        if(mSearchText.length() >= 1){
+            try {
+                return isInMountRoyal(getLocation(mSearchText).getLocation());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return false;
+            }
+        } else {
+            // If no input is given throw an exception to be handled/ignored.
+            throw new Exception("No Input Given!");
+        }
+
+    }
+
+    /**
      * Veryfies that the location attached to the hallway/classroom is within MRU campus grounds.
      * @param latlng
      * @return
@@ -34,47 +60,23 @@ public class LocationServices {
         return false;
     }
 
-
-    /**
-     * This method ensures that the user input is a valid hallway code for MRU
-     * @param input
-     * @return true if valid input
-     */
-    public boolean validateHallway(String input) {
-       return handle.findHallway(input);
+    public void addLocation(LocationInstance location){
+        handle.add(location.getName(), location);
     }
 
-    /**
-     * todo take in the array and search for classroom within the list of classrooms
-     * this method will validate a classroom and hallway input exists for MRU
-     * @param sanitizedInput
-     * @return
-     */
-    public boolean validateClassroom(String[] sanitizedInput) throws Exception {
-        return handle.findClassroom(sanitizedInput);
+    public LocationInstance getLocation(String userInput) throws Exception {
+       if(verifyLocation(userInput)){
+           return handle.get(userInput);
+       } else {
+           throw new Exception("Location Not Found");
+       }
     }
 
-
-    /**
-     * todo takes in the classroom and returns its location
-     * this method will search for a classroom and return its associated location data.
-     * @param sanitizedInput
-     * @return
-     */
-    public LocationInstance getLocationOfClassroom(String[] sanitizedInput) {
-        return handle.getClassroomLocation(sanitizedInput);
+    public boolean verifyLocation(String userInput){
+        return handle.find(userInput);
     }
 
-
-    /**
-     * todo takes in a hallway code and returns its location
-     * Get the location data of a hallway code that is passed in.
-     * @param b hallway code
-     * @return hallway location array
-     */
-    public LocationInstance getLocationOfHallway(String b) {
-        return handle.getHallwayLocation(b);
-
+    public void printTable() {
+        handle.printMap();
     }
-
 }

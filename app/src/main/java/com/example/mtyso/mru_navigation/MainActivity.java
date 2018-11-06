@@ -10,8 +10,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView( R.layout.activity_home_screen );
 
+//        DataHandler1 handle = DataHandler1.getInstance();
+        LocationServices service = new LocationServices();
+
+        // Build an array of hallways from the stored json strings.
+        String[] hallArray = getResources().getStringArray(R.array.hallwayLocations);
+
+        //still need correct locations recorded.
+        String[] poiArray = getResources().getStringArray(R.array.poi);
+
+
+        //Add in parking lots once locations are recorded.
+//        String[] parkingLotArray = getResources().getStringArray(R.array.parkingLots);
+
+        service.buildTable(hallArray);
+        service.buildTable(poiArray);
+        service.printTable();
+        setContentView( R.layout.activity_home_screen );
     }
 
     protected void startNavScreen(View view){
