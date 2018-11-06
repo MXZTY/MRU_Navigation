@@ -3,6 +3,7 @@ package com.example.mtyso.mru_navigation;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -11,6 +12,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -18,6 +21,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -51,6 +55,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     //widgets
     private EditText mSearchText;
+    private BottomNavigationView mMainNav;
+
 
 
 
@@ -65,6 +71,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        mMainNav = (BottomNavigationView) findViewById(R.id.main_nav);
+
+        mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.explore:
+                        startActivity(new Intent(MapsActivity.this, PopupScreen.class));
+                        return true;
+                    case R.id.history:
+                        startActivity(new Intent(MapsActivity.this, PopupScreen.class));
+                        return true;
+                    case R.id.go_to_me:
+
+                        return true;
+                    default: return false;
+                }
+            }
+        });
     }
 
     @Override
@@ -118,6 +143,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
+
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.center(latLng);
