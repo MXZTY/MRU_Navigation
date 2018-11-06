@@ -84,8 +84,5 @@ public class LocationServices {
         return handle.size();
     }
 
-    public String formatText(String textToFormat) {
-        String formattedString = "";
-        return formattedString;
-    }
+    public String formatText(String textToFormat){ return textToFormat.replaceAll("[^A-Za-z]+", "").toLowerCase(); }
 }

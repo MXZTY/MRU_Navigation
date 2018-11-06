@@ -139,7 +139,7 @@ public class TestLocationServices {
      */
     @Test
     public void testTextFormattingForHashMap(){
-        assertEquals("teststringisatest", locationData.formatText("Test_String is a TEST _ STRING"));
+        assertEquals("teststringisatest", locationData.formatText("Test_String is a TEST _ "));
     }
 //    /**
 //     * todo need to change this test into 2 tests. one for hallway validation and one for classroom validation.
