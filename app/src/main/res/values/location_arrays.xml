@@ -1,79 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="hallwayLocations">
-        <item>{"name":"A","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"B","lat":"51.012434","lng":"-114.130541"}</item>
-        <item>{"name":"C","lat":"51.0121996","lng":"-114.1313158"}</item>
-        <item>{"name":"D","lat":"51.0123245","lng":"-114.1316719"}</item>
-        <item>{"name":"E","lat":"51.0119611","lng":"-114.1320615"}</item>
-        <item>{"name":"F","lat":"51.0123726","lng":"-114.1321011"}</item>
-        <item>{"name":"G","lat":"51.0129634","lng":"-114.1315663"}</item>
-        <item>{"name":"H","lat":"51.0125063","lng":"-114.1319602"}</item>
-        <item>{"name":"I","lat":"51.0121855","lng":"-114.1327585"}</item>
-        <item>{"name":"J","lat":"51.0130598","lng":"-114.1332396"}</item>
-        <item>{"name":"K","lat":"51.0132223","lng":"-114.1329748"}</item>
-        <item>{"name":"M","lat":"51.0129179","lng":"-114.1322207"}</item>
-        <item>{"name":"N","lat":"51.0132630","lng":"-114.1322040"}</item>
-        <item>{"name":"O","lat":"51.0134167","lng":"-114.1318496"}</item>
-        <item>{"name":"Q","lat":"51.0122429","lng":"-114.1314007"}</item>
-        <item>{"name":"R","lat":"51.0129774","lng":"-114.1321121"}</item>
-        <item>{"name":"S","lat":"51.0124112","lng":"-114.1331019"}</item>
-        <item>{"name":"T","lat":"51.0135849","lng":"-114.1316468"}</item>
-        <item>{"name":"U","lat":"51.0127983","lng":"-114.1327216"}</item>
-        <item>{"name":"V","lat":"51.0132010","lng":"-114.1320578"}</item>
-        <item>{"name":"W","lat":"51.0128162","lng":"-114.1331977"}</item>
-        <item>{"name":"X","lat":"51.0133800","lng":"-114.1325912"}</item>
-        <item>{"name":"Y","lat":"51.0132307","lng":"-114.1330673"}</item>
-        <item>{"name":"Z","lat":"51.0137926","lng":"-114.1326311"}</item>
-        <item>{"name":"EB","lat":"51.010972","lng":"-114.131208"}</item>
-        <item>{"name":"EA","lat":"51.012276","lng":"-114.129124"}</item>
-        <item>{"name":"EC","lat":"51.011072","lng":"-114.129473"}</item>
-        <item>{"name":"ED","lat":"51.0114674","lng":"-114.1285921"}</item>
-        <item>{"name":"EL","lat":"51.0121927","lng":"-114.1279168"}</item>
+        <item>{"name":"A","lat":"51.011502","lng":"-114.130802","id":"hall"}</item>
+        <item>{"name":"B","lat":"51.012434","lng":"-114.130541","id":"hall"}</item>
+        <item>{"name":"C","lat":"51.0121996","lng":"-114.1313158","id":"hall"}</item>
+        <item>{"name":"D","lat":"51.0123245","lng":"-114.1316719","id":"hall"}</item>
+        <item>{"name":"E","lat":"51.0119611","lng":"-114.1320615","id":"hall"}</item>
+        <item>{"name":"F","lat":"51.0123726","lng":"-114.1321011","id":"hall"}</item>
+        <item>{"name":"G","lat":"51.0129634","lng":"-114.1315663","id":"hall"}</item>
+        <item>{"name":"H","lat":"51.0125063","lng":"-114.1319602","id":"hall"}</item>
+        <item>{"name":"I","lat":"51.0121855","lng":"-114.1327585","id":"hall"}</item>
+        <item>{"name":"J","lat":"51.0130598","lng":"-114.1332396","id":"hall"}</item>
+        <item>{"name":"K","lat":"51.0132223","lng":"-114.1329748","id":"hall"}</item>
+        <item>{"name":"M","lat":"51.0129179","lng":"-114.1322207","id":"hall"}</item>
+        <item>{"name":"N","lat":"51.0132630","lng":"-114.1322040","id":"hall"}</item>
+        <item>{"name":"O","lat":"51.0134167","lng":"-114.1318496","id":"hall"}</item>
+        <item>{"name":"Q","lat":"51.0122429","lng":"-114.1314007","id":"hall"}</item>
+        <item>{"name":"R","lat":"51.0129774","lng":"-114.1321121","id":"hall"}</item>
+        <item>{"name":"S","lat":"51.0124112","lng":"-114.1331019","id":"hall"}</item>
+        <item>{"name":"T","lat":"51.0135849","lng":"-114.1316468","id":"hall"}</item>
+        <item>{"name":"U","lat":"51.0127983","lng":"-114.1327216","id":"hall"}</item>
+        <item>{"name":"V","lat":"51.0132010","lng":"-114.1320578","id":"hall"}</item>
+        <item>{"name":"W","lat":"51.0128162","lng":"-114.1331977","id":"hall"}</item>
+        <item>{"name":"X","lat":"51.0133800","lng":"-114.1325912","id":"hall"}</item>
+        <item>{"name":"Y","lat":"51.0132307","lng":"-114.1330673","id":"hall"}</item>
+        <item>{"name":"Z","lat":"51.0137926","lng":"-114.1326311","id":"hall"}</item>
+        <item>{"name":"EB","lat":"51.010972","lng":"-114.131208","id":"hall"}</item>
+        <item>{"name":"EA","lat":"51.012276","lng":"-114.129124","id":"hall"}</item>
+        <item>{"name":"EC","lat":"51.011072","lng":"-114.129473","id":"hall"}</item>
+        <item>{"name":"ED","lat":"51.0114674","lng":"-114.1285921","id":"hall"}</item>
+        <item>{"name":"EL","lat":"51.0121927","lng":"-114.1279168","id":"hall"}</item>
     </string-array>
 
     <string-array name="poi">
-        <item>{"name":"Triple Gymnasium","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Aquatic Center","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Fitness Center","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Recreation Customer Service","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Recreation Entrance","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Running Track","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Wyckham House","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Digital Print Center","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Main Street","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Registrars Office,"lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Admissions and Recruitment","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Kerby Hall","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Event and Theatre Services","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Ross Glen Hall","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Atelier","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Box Office","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Bella Concert Hall","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Conservatory Services","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Parking Office","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Bookstore","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Student Digital Print Center","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Bisset School Of Business","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Faculty Of Arts","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Recreation Center","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"East Entrance","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Roderick Mah Center for Continuous Learning","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Taylor Center for the Performing Arts","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Riddel Library and Learning Center","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"West Entrance","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Wellness Center","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Child Care Center","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Leacock and Wright Theaters","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"The Table","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Security Office","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"TransAlta Pavilion","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Student Learning Services","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Lincoln Park Room","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Department of Education","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Continuing Education Customer Service","lat":"51.011502","lng":"-114.130802"}</item>
-        <item>{"name":"Triple Gymnasium","lat":"51.011502","lng":"-114.130802"}</item>
-
+        <item>{"name":"Triple_Gymnasium","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Aquatic_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Fitness_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Recreation_Customer_Service","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Recreation_Entrance","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Running_Track","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Wyckham_House","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Digital_Print_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Main_Street","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Registrars_Office,"lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Admissions_and_Recruitment","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Kerby_Hall","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Event_and_Theatre_Services","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Ross_Glen_Hall","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Atelier","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Box_Office","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Bella_Concert_Hall","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Conservatory_Services","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Parking_Office","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Bookstore","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Student_Digital_Print_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Bisset_School_Of_Business","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Faculty_Of_Arts","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Recreation_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"East_Entrance","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Roderick_Mah_Center_for_Continuous_Learning","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Taylor_Center_for_the_Performing_Arts","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Riddel_Library_and_Learning_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"West_Entrance","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Wellness_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Child_Care_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Leacock_and_Wright_Theaters","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"The_Table","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Security_Office","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"TransAlta_Pavilion","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Student_Learning_Services","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Lincoln_Park_Room","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Department_of_Education","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Continuing_Education_Customer_Service","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
     </string-array>
 
     <!--Pick-up/Drop-off zone-->

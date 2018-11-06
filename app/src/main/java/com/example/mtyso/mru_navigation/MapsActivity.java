@@ -28,9 +28,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -46,38 +48,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager locationManager;
     private LocationListener locationListener;
     private boolean focus = true;
-    private HashTable hallwayTable = new HashTable();
 
     //widgets
     private EditText mSearchText;
-    private ValidateUserInput validate;
 
 
 
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // Build an array of hallways from the stored json strings.
-        String[] array;
-        array = getResources().getStringArray(R.array.hallwayLocations);
-
-        // for each json string, parse the string and create a hallway object.
-        for(String jsonStr : array){
-            try {
-                JSONObject obj = new JSONObject(jsonStr);
-                System.out.println(obj.get("name"));
-                Hallway hall = new Hallway(obj.get("name").toString(), new LatLng((double)obj.get("lat"), (double)obj.get("lng")));
-                // add the hallway object to the hash table.
-                hallwayTable.add(hall);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
@@ -115,6 +94,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
+        mMap.setIndoorEnabled(true);
+        mMap.setMinZoomPreference(6.0f);
+        mMap.setMaxZoomPreference(18.0f);
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(51.0120288,-114.1329028)).zoom(17.25f).bearing(80).tilt(30).build();
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
 
         try {
             // Customise the styling of the base map using a JSON object defined
@@ -133,19 +118,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.center(latLng);
                 circleOptions.radius(1);
                 circleOptions.fillColor(Color.RED);
+                circleOptions.strokeColor(Color.RED);
                 circleOptions.strokeWidth(6);
 
-                mMap.setIndoorEnabled(true);
                 mMap.addCircle(circleOptions);
 
                 if(focus) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) 19));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) 17.25));
                 }
                 init();
 
@@ -194,17 +178,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mSearchText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                LocationServices locations = new LocationServices();
                 if(actionId == EditorInfo.IME_ACTION_SEARCH
                     || actionId == EditorInfo.IME_ACTION_DONE
                     || event.getAction() == KeyEvent.ACTION_DOWN
                     || event.getAction() == KeyEvent.KEYCODE_ENTER) {
                     //Call getUserInput to process the user input recorded in mSearchText global variable.
-                    validate = new ValidateUserInput( String.valueOf(mSearchText.getText()).toUpperCase(), hallwayTable );
                     try {
-                        if(validate.getUserInput()) {
+                        String searchText = mSearchText.getText().toString();
+                        if(locations.validateUserInput(searchText)){
                             focus = false;
-                            mMap.addMarker(new MarkerOptions().position(validate.getFoundLocation()).title(getString(R.string.classroom)));
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(validate.getFoundLocation(), (float)19));
+                            mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locations.getLocation(searchText).getLocation(),17.5f));
                         } else {
                             //should display error somehow (red outline or something)
                         }
@@ -217,10 +202,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
-
-//    public void goToMyLocation(){
-//        mMap.moveCamera(locationListener.onLocationChanged(locationManager.getLastKnownLocation()););
-//    }
-
 
 }
