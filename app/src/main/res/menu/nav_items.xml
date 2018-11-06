@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/go_to_me"
+        android:checked="false"
+        android:icon="@drawable/ic_mylocation"
+        android:title="@string/nav_myLocation" />
+    <item
         android:layout_width="match_parent"
         android:icon="@drawable/ic_explore"
         android:id="@+id/explore"
@@ -12,9 +17,4 @@
         android:checked="false"
         android:id="@+id/history"
         android:title="@string/nav_history" />
-    <item
-        android:id="@+id/go_to_me"
-        android:checked="false"
-        android:icon="@drawable/ic_mylocation"
-        android:title="@string/nav_myLocation" />
 </menu>
