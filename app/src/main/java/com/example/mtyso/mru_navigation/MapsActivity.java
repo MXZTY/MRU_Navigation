@@ -37,6 +37,9 @@ import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+
+
+
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -62,6 +65,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
+
         mMainNav = findViewById(R.id.main_nav);
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -75,12 +80,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         //startActivity(new Intent(MapsActivity.this, PopupScreen.class));
                         return true;
                     case R.id.go_to_me:
-
                         return true;
                     default: return false;
                 }
+
+
             }
         });
+
+        goToMyLocation();
     }
 
     @Override
@@ -111,9 +119,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap = googleMap;
         mMap.setIndoorEnabled(true);
-        mMap.setMinZoomPreference(6.0f);
-        mMap.setMaxZoomPreference(18.0f);
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(51.0120288,-114.1329028)).zoom(17.25f).bearing(80).tilt(30).build();
+        mMap.setBuildingsEnabled(true);
+        mMap.getUiSettings().setScrollGesturesEnabled(false);
+        mMap.setMaxZoomPreference(18f);
+        mMap.setMinZoomPreference(15f);
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(51.012374, -114.131309)).zoom(16.35f).bearing(223.5f).tilt(40).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 
@@ -129,7 +139,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } catch (Resources.NotFoundException e) {
             Log.e("no style", "Can't find style. Error: ", e);
         }
+    }
 
+    /**
+     * This method is run after the map is ready to begin listening for user input when the user presses enter
+     */
+    private void init(){
+        Log.d("init", "Initializing");
+        mSearchText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                LocationAccessLayer locations = new LocationAccessLayer();
+                if(actionId == EditorInfo.IME_ACTION_SEARCH
+                    || actionId == EditorInfo.IME_ACTION_DONE
+                    || event.getAction() == KeyEvent.ACTION_DOWN
+                    || event.getAction() == KeyEvent.KEYCODE_ENTER) {
+                    //Call getUserInput to process the user input recorded in mSearchText global variable.
+                    try {
+                        String searchText = mSearchText.getText().toString();
+                        if(locations.validateUserInput(searchText)){
+                            focus = false;
+                            mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
+//                            LatLng moveTo = new LatLng(locations.getLocation(searchText).getLatitude(), locations.getLocation(searchText).getLongitude());
+//                            mMap.moveCamera(CameraUpdateFactory.newLatLng(moveTo));
+                        } else {
+                            //should display error somehow (red outline or something)
+                        }
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }
+
+                return false;
+            }
+        });
+    }
+
+
+    public void goToMyLocation(){
         locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
@@ -138,15 +185,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.center(latLng);
-                circleOptions.radius(1);
+                circleOptions.radius(2);
                 circleOptions.fillColor(Color.RED);
                 circleOptions.strokeColor(Color.RED);
-                circleOptions.strokeWidth(6);
-
+                circleOptions.strokeWidth(7);
                 mMap.addCircle(circleOptions);
 
                 if(focus) {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) 17.25));
+//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) 17.25));
                 }
                 init();
 
@@ -185,41 +231,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
             }
         }
-    }
-
-    /**
-     * This method is run after the map is ready to begin listening for user input when the user presses enter
-     */
-    private void init(){
-        Log.d("init", "Initializing");
-        mSearchText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                LocationAccessLayer locations = new LocationAccessLayer();
-                if(actionId == EditorInfo.IME_ACTION_SEARCH
-                    || actionId == EditorInfo.IME_ACTION_DONE
-                    || event.getAction() == KeyEvent.ACTION_DOWN
-                    || event.getAction() == KeyEvent.KEYCODE_ENTER) {
-                    //Call getUserInput to process the user input recorded in mSearchText global variable.
-                    try {
-                        String searchText = mSearchText.getText().toString();
-                        userHistory.add(searchText);
-                        if(locations.validateUserInput(searchText)){
-                            focus = false;
-                            mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
-                            LatLng moveTo = new LatLng(locations.getLocation(searchText).getLatitude(), locations.getLocation(searchText).getLongitude());
-                            mMap.moveCamera(CameraUpdateFactory.newLatLng(moveTo));
-                        } else {
-                            //should display error somehow (red outline or something)
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-
-                return false;
-            }
-        });
     }
 
 }
