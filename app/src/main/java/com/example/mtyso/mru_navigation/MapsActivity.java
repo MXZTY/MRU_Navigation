@@ -218,6 +218,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     //Call getUserInput to process the user input recorded in mSearchText global variable.
                     try {
                         String searchText = mSearchText.getText().toString();
+                        historyList.add(searchText);
                         if(locations.validateUserInput(searchText)){
                             focus = false;
                             mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
