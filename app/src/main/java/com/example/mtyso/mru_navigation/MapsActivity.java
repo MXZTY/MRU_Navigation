@@ -215,7 +215,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         if(locations.validateUserInput(searchText)){
                             focus = false;
                             mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locations.getLocation(searchText).getLocation(),17.5f));
+                            LatLng moveTo = new LatLng(locations.getLocation(searchText).getLatitude(), locations.getLocation(searchText).getLongitude());
+                            mMap.moveCamera(CameraUpdateFactory.newLatLng(moveTo));
                         } else {
                             //should display error somehow (red outline or something)
                         }

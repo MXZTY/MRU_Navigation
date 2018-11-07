@@ -39,7 +39,8 @@ public class DataHandler1 implements Serializable {
     }
 
     public void add(String key, LocationInstance value){
-        this.map.put(hashedValue(key.toUpperCase()), value);
+        this.map.put(hashedValue(key), value);
+        System.out.println(hashedValue(key) + " " + key);
     }
 
     public boolean find(String key){
@@ -86,8 +87,9 @@ public class DataHandler1 implements Serializable {
                 if(obj.get("id").toString().equalsIgnoreCase("hall")){
                     location = new Hallway(obj.get("name").toString(), new LatLng((double)obj.get("lat"), (double)obj.get("lng")), obj.get("id").toString());
                 } else if(obj.get("id").toString().equalsIgnoreCase("poi")){
-                    location = new PointOfInterest(obj.get("name").toString().replaceAll("_", "\\s+"),  new LatLng((double)obj.get("lat"), (double)obj.get("lng")), obj.get("id").toString());
+                    location = new PointOfInterest(formatText(obj.get("name").toString()),  new LatLng((double)obj.get("lat"), (double)obj.get("lng")), obj.get("id").toString());
                 } else {
+                    System.out.println();
                     location = new ParkingLot(obj.get("name").toString(),  new LatLng((double)obj.get("lat"), (double)obj.get("lng")), obj.get("id").toString(), false, false );
                 }
                 // add the hallway object to the hash table.
@@ -105,6 +107,7 @@ public class DataHandler1 implements Serializable {
      * @return
      */
     public Long hashedValue(String word) {
+        word = formatText(word);
         long hashVal = 0;
         for (int i = 0; i < word.length(); i++) {
             hashVal = (hashVal * 31) + word.charAt(i);
@@ -122,5 +125,8 @@ public class DataHandler1 implements Serializable {
     public ArrayList<LocationInstance> getAll(String objectType){
         return this.getById(objectType);
     }
+
+    public String formatText(String textToFormat){ return textToFormat.replaceAll("[^A-Za-z]+", "").toLowerCase(); }
+
 
 }

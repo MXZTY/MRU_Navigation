@@ -93,10 +93,6 @@
         <item>{"name":"Lot_8","lat":"51.009739","lng":"-114.130205","id":"pLot","isAccessible":"false","isPaidLot":"true"}</item>
         <item>{"name":"Lot_9","lat":"51.010533","lng":"-114.135696","id":"pLot","isAccessible":"false","isPaidLot":"true"}</item>
 
-        <!--Car2Go-->
-        <item>{"name":"Car2Go_Zone_West","lat":"51.011445","lng":"-114.136325","id":"pLot","isAccessible":"false","isPaidLot":"false"}</item>
-        <item>{"name":"Car2Go_Zone_1","lat":"51.012779","lng":"-114.136203","id":"pLot","isAccessible":"true","isPaidLot":"false"}</item>
-        <item>{"name":"Car2Go_Zone_4","lat":"51.014433","lng":"-114.131456","id":"pLot","isAccessible":"true","isPaidLot":"false"}</item>
 
         <!--Day Parking Lots-->
         <item>{"name":"Lot_A","lat":"51.008836","lng":"-114.133970","id":"pLot","isAccessible":"false","isPaidLot":"true"}</item>
@@ -112,5 +108,8 @@
     </string-array>
 
 
-
+    <!--&lt;!&ndash;Car2Go&ndash;&gt;-->
+    <!--<item>{"name":"Car2Go_Zone_West","lat":"51.011445","lng":"-114.136325","id":"pLot","isAccessible":"false","isPaidLot":"false"}</item>-->
+    <!--<item>{"name":"Car2Go_Zone_1","lat":"51.012779","lng":"-114.136203","id":"pLot","isAccessible":"true","isPaidLot":"false"}</item>-->
+    <!--<item>{"name":"Car2Go_Zone_4","lat":"51.014433","lng":"-114.131456","id":"pLot","isAccessible":"true","isPaidLot":"false"}</item>-->
 </resources>

@@ -96,5 +96,4 @@ public class LocationServices {
     public ArrayList<LocationInstance> getAllParkingLots(){
         return handle.getAll("plot");
     }
-    public String formatText(String textToFormat){ return textToFormat.replaceAll("[^A-Za-z]+", "").toLowerCase(); }
 }
