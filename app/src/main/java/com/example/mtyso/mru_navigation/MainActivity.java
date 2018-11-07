@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 //        DataHandler1 handle = DataHandler1.getInstance();
-        LocationServices service = new LocationServices();
+        LocationAccessLayer service = new LocationAccessLayer();
 
         // Build an array of hallways from the stored json strings.
         String[] hallArray = getResources().getStringArray(R.array.hallwayLocations);

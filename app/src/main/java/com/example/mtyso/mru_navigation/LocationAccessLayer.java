@@ -5,7 +5,7 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.ArrayList;
 
 
-public class LocationServices {
+public class LocationAccessLayer {
 
     //Map Info
     private final float longRightBound = -114.123353f;
@@ -17,7 +17,7 @@ public class LocationServices {
     // this.mruHallways = new String[]{"A","B","C","D","E","F","G","H","I","J","K","M","N","O","Q","R","S","T","U","V","W","X","Y","Z","EA","EB","EC","ED","EL"};
     //the below needs refinement and is temporary
 
-    public LocationServices(){
+    public LocationAccessLayer(){
         this.handle = DataHandler1.getInstance();
     }
 

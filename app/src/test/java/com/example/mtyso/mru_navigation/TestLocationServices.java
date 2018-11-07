@@ -21,7 +21,7 @@
 //
 //    //classes involved with testing this functional requirement.
 //    private MapsActivity activity;
-//    private LocationServices locationData;
+//    private LocationAccessLayer locationData;
 //    private String[] pois;
 //
 //    //resources to use for test
@@ -32,7 +32,7 @@
 //    @Before
 //    public void setUp() throws Exception {
 //
-//        this.locationData = new LocationServices();
+//        this.locationData = new LocationAccessLayer();
 //        this.activity = new MapsActivity();
 //        this.mruHallways = new String[]{"A","B","C","D","E","F","G","H","I","J","K","M","N","O","Q","R","S","T","U","V","W","X","Y","Z","EA","EB","EC","ED","EL"};
 //        this.pLots = new String[]{
