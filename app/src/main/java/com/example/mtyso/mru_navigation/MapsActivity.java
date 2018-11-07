@@ -33,12 +33,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private boolean focus = true;
+
+    ArrayList<String> userHistory = new ArrayList<String>();
 
     //widgets
     private EditText mSearchText;
@@ -68,7 +72,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         startActivity(new Intent(MapsActivity.this, PopupScreen.class));
                         return true;
                     case R.id.history:
-                        startActivity(new Intent(MapsActivity.this, PopupScreen.class));
+                        //startActivity(new Intent(MapsActivity.this, PopupScreen.class));
                         return true;
                     case R.id.go_to_me:
 
@@ -199,6 +203,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     //Call getUserInput to process the user input recorded in mSearchText global variable.
                     try {
                         String searchText = mSearchText.getText().toString();
+                        userHistory.add(searchText);
                         if(locations.validateUserInput(searchText)){
                             focus = false;
                             mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
