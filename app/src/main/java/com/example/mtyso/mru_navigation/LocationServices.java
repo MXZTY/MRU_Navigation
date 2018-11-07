@@ -86,11 +86,6 @@ public class LocationServices {
         return handle.size();
     }
 
-    public String formatText(String textToFormat) {
-        String formattedString = "";
-        return formattedString;
-    }
-
     public ArrayList<LocationInstance> getAllHalls() {
         return handle.getAll("hall");
 
@@ -103,4 +98,5 @@ public class LocationServices {
     public ArrayList<LocationInstance> getAllParkingLots(){
         return handle.getAll("plot");
     }
+    public String formatText(String textToFormat){ return textToFormat.replaceAll("[^A-Za-z]+", "").toLowerCase(); }
 }

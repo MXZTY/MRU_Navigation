@@ -81,15 +81,6 @@ public class TestLocationServices {
 
     }
 
-    /**
-     * This test will ensure that the user input, and the Json data is formatted correctly for adding and searching through the hash map
-     * the formatting should get rid of all
-     */
-    @Test
-    public void testTextFormattingForHashMap(){
-//        assertEquals("teststringisateststring", locationData.formatText("Test_String is a TEST _ STRING"));
-    }
-
     @Test
     public void itCanGetAllHallways(){
 //        assertTrue(locationData.getAllHalls().length == mruHallways.length);
@@ -157,6 +148,14 @@ public class TestLocationServices {
         }
     }
 
+    /**
+     * This test will ensure that the user input, and the Json data is formatted correctly for adding and searching through the hash map
+     * the formatting should get rid of all
+     */
+    @Test
+    public void testTextFormattingForHashMap(){
+        assertEquals("teststringisatest", locationData.formatText("Test_String is a TEST _ "));
+    }
 //    /**
 //     * todo need to change this test into 2 tests. one for hallway validation and one for classroom validation.
 //     * this test ensures that the validateUserInput method properly validates user input.
