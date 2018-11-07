@@ -42,7 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationListener locationListener;
     private boolean focus = true;
 
-    ArrayList<String> userHistory = new ArrayList<String>();
+    public ArrayList<String> userHistory = new ArrayList<>();
 
     //widgets
     private EditText mSearchText;
