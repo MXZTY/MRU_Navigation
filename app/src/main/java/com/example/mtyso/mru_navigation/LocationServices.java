@@ -2,6 +2,8 @@ package com.example.mtyso.mru_navigation;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
+
 
 public class LocationServices {
 
@@ -87,5 +89,18 @@ public class LocationServices {
     public String formatText(String textToFormat) {
         String formattedString = "";
         return formattedString;
+    }
+
+    public ArrayList<LocationInstance> getAllHalls() {
+        return handle.getAll("hall");
+
+    }
+
+    public ArrayList<LocationInstance> getAllPois() {
+        return handle.getAll("poi");
+    }
+
+    public ArrayList<LocationInstance> getAllParkingLots(){
+        return handle.getAll("plot");
     }
 }

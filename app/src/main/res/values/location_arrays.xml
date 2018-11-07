@@ -32,10 +32,12 @@
         <item>{"name":"EL","lat":"51.0121927","lng":"-114.1279168","id":"hall"}</item>
     </string-array>
 
+    <!--DO THIS BY TOMORROW RIGHT NOW!!!!!!-->
     <string-array name="poi">
-        <item>{"name":"Triple_Gymnasium","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Aquatic_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Fitness_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <!--MAXWELL -->
+        <item>{"name":"Triple_Gymnasium","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Aquatic_Center","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Fitness_Center","lat":"","lng":"","id":"poi"}</item>
         <item>{"name":"Recreation_Customer_Service","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Recreation_Entrance","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Running_Track","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
@@ -48,6 +50,7 @@
         <item>{"name":"Event_and_Theatre_Services","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Ross_Glen_Hall","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Atelier","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <!--CONNOR-->
         <item>{"name":"Box_Office","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Bella_Concert_Hall","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Conservatory_Services","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
@@ -61,6 +64,8 @@
         <item>{"name":"Roderick_Mah_Center_for_Continuous_Learning","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Taylor_Center_for_the_Performing_Arts","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Riddel_Library_and_Learning_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+
+        <!--MARC-->
         <item>{"name":"West_Entrance","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Wellness_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Child_Care_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>

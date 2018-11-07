@@ -1,18 +1,14 @@
 package com.example.mtyso.mru_navigation;
 
-import android.location.Location;
-
 import com.google.android.gms.maps.model.LatLng;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 import static android.icu.lang.UCharacter.toUpperCase;
@@ -55,6 +51,18 @@ public class DataHandler1 implements Serializable {
 
     public LocationInstance get(String key){
         return this.map.get(hashedValue(key));
+    }
+
+    private ArrayList<LocationInstance> getById(String id){
+        ArrayList<LocationInstance> locations = new ArrayList<LocationInstance>();
+        int i = 0;
+        for(LocationInstance location : map.values()){
+            if(location.getID() == id){
+                locations.add( location);
+                i++;
+            }
+        }
+        return locations;
     }
 
     public void printMap(){
@@ -110,4 +118,9 @@ public class DataHandler1 implements Serializable {
     public long size() {
         return map.size();
     }
+
+    public ArrayList<LocationInstance> getAll(String objectType){
+        return this.getById(objectType);
+    }
+
 }
