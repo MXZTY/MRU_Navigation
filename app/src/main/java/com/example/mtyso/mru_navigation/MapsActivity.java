@@ -73,6 +73,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         mMainNav = (BottomNavigationView) findViewById(R.id.main_nav);
+      /*  int size = mMainNav.getMenu().size();
+        for(int i = 0; i < size; i++){
+            mMainNav.getMenu().getItem(i).setChecked(false);
+        }*/
+
 
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -82,7 +87,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         startActivity(new Intent(MapsActivity.this, PopupScreen.class));
                         return true;
                     case R.id.history:
-                        startActivity(new Intent(MapsActivity.this, PopupScreen.class));
+                        //startActivity(new Intent(MapsActivity.this, PopupScreen.class));
                         return true;
                     case R.id.go_to_me:
 

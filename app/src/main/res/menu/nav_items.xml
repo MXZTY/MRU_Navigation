@@ -2,6 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_none"
+        android:title=""
+        android:visible="false"/>
+    <item
         android:id="@+id/go_to_me"
         android:checked="false"
         android:icon="@drawable/ic_mylocation"
