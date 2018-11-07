@@ -53,6 +53,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationListener locationListener;
     private boolean focus = true;
 
+    public ArrayList<String> historyList = new ArrayList<String>();
+
     //widgets
     private EditText mSearchText;
     private BottomNavigationView mMainNav;
@@ -66,6 +68,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         mSearchText = (EditText) findViewById(R.id.input_search);
+        String savedText = mSearchText.getText().toString();
+        historyList.add(savedText);
+
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
