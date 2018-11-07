@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,6 +26,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -56,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public ArrayList<String> historyList = new ArrayList<String>();
 
     //widgets
-    private EditText mSearchText;
+    private AutoCompleteTextView mSearchText ;
     private BottomNavigationView mMainNav;
 
 
@@ -67,9 +70,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        mSearchText = (EditText) findViewById(R.id.input_search);
-        String savedText = mSearchText.getText().toString();
-        historyList.add(savedText);
+
+        //initiate an auto complete text view
+        AutoCompleteTextView mSearchText = (AutoCompleteTextView) findViewById(R.id.simpleAutoCompleteTextView);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, historyList);
+
+        mSearchText.setAdapter(adapter);
+        mSearchText.setThreshold(1);//start searching from 1 character
+        mSearchText.setAdapter(adapter);   //set the adapter for displaying country name list
 
 
 
