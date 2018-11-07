@@ -14,7 +14,6 @@ public class LocationServices {
     private final float latLowerBound = 51.007944f;
     private DataHandler1 handle;
 
-    //todo - need to get correct location data for all of the hallways listed below.
     // this.mruHallways = new String[]{"A","B","C","D","E","F","G","H","I","J","K","M","N","O","Q","R","S","T","U","V","W","X","Y","Z","EA","EB","EC","ED","EL"};
     //the below needs refinement and is temporary
 
@@ -88,7 +87,6 @@ public class LocationServices {
 
     public ArrayList<LocationInstance> getAllHalls() {
         return handle.getAll("hall");
-
     }
 
     public ArrayList<LocationInstance> getAllPois() {

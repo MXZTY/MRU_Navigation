@@ -35,21 +35,22 @@
     <!--DO THIS BY TOMORROW RIGHT NOW!!!!!!-->
     <string-array name="poi">
         <!--MAXWELL -->
-        <item>{"name":"Triple_Gymnasium","lat":"","lng":"","id":"poi"}</item>
-        <item>{"name":"Aquatic_Center","lat":"","lng":"","id":"poi"}</item>
-        <item>{"name":"Fitness_Center","lat":"","lng":"","id":"poi"}</item>
-        <item>{"name":"Recreation_Customer_Service","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Recreation_Entrance","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Running_Track","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Wyckham_House","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Digital_Print_Center","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Main_Street","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Registrars_Office,"lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Admissions_and_Recruitment","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Kerby_Hall","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Event_and_Theatre_Services","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Ross_Glen_Hall","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
-        <item>{"name":"Atelier","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
+        <item>{"name":"Triple_Gymnasium","lat":"51.011520","lng":"-114.135361","id":"poi"}</item>
+        <item>{"name":"Aquatic_Center","lat":"51.012209","lng":"-114.135050","id":"poi"}</item>
+        <item>{"name":"Fitness_Center","lat":"51.011719","lng":"-114.134379","id":"poi"}</item>
+
+        <item>{"name":"Recreation_Customer_Service","lat":"51.012114","lng":"-114.134642","id":"poi"}</item>
+        <item>{"name":"Recreation_Entrance","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Running_Track","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Wyckham_House","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Digital_Print_Center","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Main_Street","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Registrars_Office,"lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Admissions_and_Recruitment","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Kerby_Hall","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Event_and_Theatre_Services","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Ross_Glen_Hall","lat":"","lng":"","id":"poi"}</item>
+        <item>{"name":"Atelier","lat":"","lng":"","id":"poi"}</item>
         <!--CONNOR-->
         <item>{"name":"Box_Office","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
         <item>{"name":"Bella_Concert_Hall","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
@@ -79,13 +80,9 @@
         <item>{"name":"Continuing_Education_Customer_Service","lat":"51.011502","lng":"-114.130802","id":"poi"}</item>
     </string-array>
 
-    <!--Pick-up/Drop-off zone-->
-    <!--Zone 3-->
-    <!--Zone 4-->
-    <!--Zone ED-->
-    <!--Zone 7-->
-    <!--Zone 8-->
-    <!--Zone 9-->
+    <string-array name="pLots">
+        <item>{"name":"Lot_A","lat":"51.008756","lng":"-114.134062","id":"pLot","isAccessible":"false","isPaidLot":"true"}</item>
+    </string-array>
 
     <!--Gated Parking Lots-->
     <!--Lot 3-->
