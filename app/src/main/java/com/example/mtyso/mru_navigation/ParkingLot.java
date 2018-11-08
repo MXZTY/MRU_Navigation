@@ -25,7 +25,7 @@ public class ParkingLot implements LocationInstance {
      */
     @Override
     public LatLng getLocation() {
-        return null;
+        return this.location;
     }
 
     /**
@@ -35,7 +35,7 @@ public class ParkingLot implements LocationInstance {
      */
     @Override
     public double getLatitude() {
-        return 0;
+        return this.location.latitude;
     }
 
     /**
@@ -45,7 +45,7 @@ public class ParkingLot implements LocationInstance {
      */
     @Override
     public double getLongitude() {
-        return 0;
+        return this.location.longitude;
     }
 
     /**
@@ -55,8 +55,9 @@ public class ParkingLot implements LocationInstance {
      */
     @Override
     public String getName() {
-        return null;
+        return this.name;
     }
+
 
     /**
      * This method is used to get the ID of the location instance.
@@ -65,7 +66,7 @@ public class ParkingLot implements LocationInstance {
      */
     @Override
     public String getID() {
-        return null;
+        return this.id;
     }
 
     public boolean isPaidLot(){

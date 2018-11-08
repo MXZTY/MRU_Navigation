@@ -20,12 +20,15 @@ public class MainActivity extends AppCompatActivity {
         //still need correct locations recorded.
         String[] poiArray = getResources().getStringArray(R.array.poi);
 
+        String[]parkArray = getResources().getStringArray(R.array.pLots);
+
 
         //Add in parking lots once locations are recorded.
 //        String[] parkingLotArray = getResources().getStringArray(R.array.parkingLots);
 
         service.buildTable(hallArray);
         service.buildTable(poiArray);
+        service.buildTable(parkArray);
         service.printTable();
         setContentView( R.layout.activity_home_screen );
     }
