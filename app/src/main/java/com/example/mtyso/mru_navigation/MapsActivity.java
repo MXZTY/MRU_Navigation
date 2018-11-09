@@ -36,23 +36,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
-
-
-
     private GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private boolean focus = true;
 
+    //need an array for storing the users history so it can be accessed for the userHistoryTab
     public ArrayList<String> userHistory = new ArrayList<>();
 
     //widgets
     private EditText mSearchText;
     private BottomNavigationView mMainNav;
-
-
-
 
     @SuppressLint("MissingPermission")
     @Override
@@ -65,10 +59,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
-
         mMainNav = findViewById(R.id.main_nav);
 
+        //Add a listener to the navigation menu for setting the button actions.
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -91,6 +84,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         goToMyLocation();
     }
 
+    /**
+     * This method requests the users location permissions if they are not already set.
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -150,14 +149,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 LocationAccessLayer locations = new LocationAccessLayer();
+                //when the user inputs a string and presses enter
                 if(actionId == EditorInfo.IME_ACTION_SEARCH
                     || actionId == EditorInfo.IME_ACTION_DONE
                     || event.getAction() == KeyEvent.ACTION_DOWN
                     || event.getAction() == KeyEvent.KEYCODE_ENTER) {
+
                     //Call getUserInput to process the user input recorded in mSearchText global variable.
                     try {
                         String searchText = mSearchText.getText().toString();
+                        //Add users search text to the search history.
+                        userHistory.add(mSearchText.getText().toString());
                         if(locations.validateUserInput(searchText)){
+                            // if it is a valid location, unfocus from the users locaiton and add a new marker for the returned location instance.
                             focus = false;
                             mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
 //                            LatLng moveTo = new LatLng(locations.getLocation(searchText).getLatitude(), locations.getLocation(searchText).getLongitude());
@@ -166,22 +170,25 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             //should display error somehow (red outline or something)
                         }
                     } catch (Exception e) {
+                        //TODO handle invalid input here
                         System.out.println(e.getMessage());
                     }
                 }
-
                 return false;
             }
         });
     }
 
 
+    /**
+     * This method requests the users location through the implementation of a locationListener sub class
+     * It will retrieve the users location and display it with a red circle on the Map
+     */
     public void goToMyLocation(){
         locationManager = (LocationManager) this.getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.center(latLng);

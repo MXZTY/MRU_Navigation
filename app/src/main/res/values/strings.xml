@@ -4,10 +4,10 @@
     <string name="start_button">START</string>
     <string name="mruLogo">mruLogo</string>
     <string name="ic_magnify">ic_magnify</string>
-    <string name="enterClassroomId">Enter Classroom ID</string>
+    <string name="enterClassroomId">ex(B, EA, Bookstore)</string>
     <string name="nav_history">History</string>
     <string name="nav_Explore">Explore</string>
     <string name="nav_myLocation">My Location</string>
-    <string name="classroom">Classroom</string>
+    <string name="classroom">Hallway B</string>
 
 </resources>
