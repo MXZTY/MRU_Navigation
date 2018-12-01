@@ -50,6 +50,8 @@
 
     <activity android:name=".PopupScreen_History"
         android:theme="@style/AppTheme.CustomTheme"></activity>
+        <activity android:name=".PopupScreen_Favourites"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
     </application>
 
 </manifest>
