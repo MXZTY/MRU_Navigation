@@ -3,6 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_none"
+        android:title=""
+        android:visible="false"/>
+    <item
         android:icon="@drawable/ic_explore"
         android:id="@+id/explore"
         android:title="@string/nav_Explore" />
