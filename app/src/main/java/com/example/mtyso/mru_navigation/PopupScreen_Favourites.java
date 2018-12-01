@@ -41,7 +41,7 @@ public class PopupScreen_Favourites extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1,
                                     int position, long arg3) {
-                MapsActivity.userFavourites.add(favs.get(position));
+                //Insert code here for onClick
             }
         });
     }
