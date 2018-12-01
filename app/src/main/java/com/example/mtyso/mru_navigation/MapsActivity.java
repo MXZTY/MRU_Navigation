@@ -42,7 +42,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private boolean focus = true;
 
     //need an array for storing the users history so it can be accessed for the userHistoryTab
-    public ArrayList<String> userHistory = new ArrayList<>();
+    public static ArrayList<String> userHistory = new ArrayList<>();
+    public static ArrayList<String> userFavourites = new ArrayList<>();
 
     //widgets
     private EditText mSearchText;
@@ -67,10 +68,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.explore:
-                        startActivity(new Intent(MapsActivity.this, PopupScreen.class));
+
                         return true;
                     case R.id.history:
-                        //startActivity(new Intent(MapsActivity.this, PopupScreen.class));
+                        startActivity(new Intent(MapsActivity.this, PopupScreen_History.class));
                         return true;
                     case R.id.go_to_me:
                         return true;
