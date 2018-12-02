@@ -15,25 +15,24 @@ import java.util.ArrayList;
 public class PopupScreen_Explore extends ListActivity {
     private LocationAccessLayer loc = new LocationAccessLayer();
     //public ArrayList<LocationInstance> tmp;
-    //public String[] hallways;
-    ArrayList<LocationInstance> halls;
-    ArrayList<LocationInstance> pois;
-    ArrayList<LocationInstance> lots;
+    public String[] hallways;
+    public String[] POIs;
+    public String[] lots;
+    ArrayList<LocationInstance> h;
+    ArrayList<LocationInstance> p;
+    ArrayList<LocationInstance> l;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        halls = loc.getAllHalls();
-        pois = loc.getAllPois();
-        lots = loc.getAllParkingLots();
+        hallways = addToArray(loc.getAllHalls());
+        POIs = addToArray(loc.getAllParkingLots());
+        lots = addToArray(loc.getAllPois());
 
-        System.out.println("Hallway Size:" + halls.size());
-        System.out.println("Poi's Size:" + pois.size());
-        System.out.println("Lots Size:" + lots.size());
+        CustomAdapter adapter1=new CustomAdapter(this, hallways);
+        setListAdapter(adapter1);
 
-        //CustomAdapter adapter=new CustomAdapter(this, hallways);
-        //setListAdapter(adapter);
     }
 
     @Override
@@ -44,5 +43,14 @@ public class PopupScreen_Explore extends ListActivity {
 
 
     }
+
+    public String[] addToArray(ArrayList<LocationInstance> val){
+       String[] arr = new String[val.size()];
+        for(int i=0; i<val.size();i++){
+            arr[i] = val.get(i).getName();
+        }
+        return arr;
+    }
+
 }
 

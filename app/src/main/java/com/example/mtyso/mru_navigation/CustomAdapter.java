@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class CustomAdapter extends ArrayAdapter<String>{
 
     final Context c;
-    String[] values;
+    String[]values;
 
     //CONSTRUCTOR
     public CustomAdapter(Context context, String[] values) {
@@ -23,6 +23,11 @@ public class CustomAdapter extends ArrayAdapter<String>{
 
     }
 
+
+
+
+
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -31,7 +36,7 @@ public class CustomAdapter extends ArrayAdapter<String>{
         //INFLATE OUR XML LAYOUT TO ROW
         View row=inflator.inflate(R.layout.popup, parent,false);
 
-        //DECLARE FIELDS CONTAINED IN OUR LAYOUR
+        //DECLARE FIELDS CONTAINED IN OUR LAYOUT
         TextView tv=(TextView) row.findViewById(R.id.textView1);
         ImageView img=(ImageView) row.findViewById(R.id.imageView1);
 
