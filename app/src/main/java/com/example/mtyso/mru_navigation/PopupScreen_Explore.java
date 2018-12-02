@@ -30,8 +30,8 @@ public class PopupScreen_Explore extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         hallways = addToArray(loc.getAllHalls());
-        POIs = addToArray(loc.getAllParkingLots());
-        lots = addToArray(loc.getAllPois());
+        POIs = addToArray(loc.getAllPois());
+        lots = addToArray(loc.getAllParkingLots());
         setContentView(R.layout.explore);
 
         }
