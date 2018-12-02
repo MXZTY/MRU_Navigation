@@ -1,49 +1,37 @@
 package com.example.mtyso.mru_navigation;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class PopupScreen_History extends AppCompatActivity {
+public class PopupScreen_History extends ListActivity {
 
-    public ArrayList<String> history = MapsActivity.userHistory;
+    String[] languages = new String[MapsActivity.userHistory.size()];
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.popup);
+        //  setContentView(R.layout.activity_main);
+        for(int i = 0; i < MapsActivity.userHistory.size(); i++){
+            languages[i] =  MapsActivity.userHistory.get(i);
 
-        ListView historyList = (ListView) findViewById(R.id.textView2);
-        final ArrayAdapter listAdapter;
+        }
+        CustomAdapter adapter=new CustomAdapter(this, languages);
+        setListAdapter(adapter);
+    }
 
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        // TODO Auto-generated method stub
+        super.onListItemClick(l, v, position, id);
 
-        int width = dm.widthPixels;
-        int height = (dm.heightPixels / 2);
-
-        getWindow().setLayout(width,height);
-
-            listAdapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1,history);
-            historyList.setAdapter(listAdapter);
-
-        historyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1,
-                                    int position, long arg3) {
-                MapsActivity.userFavourites.add(history.get(position));
-            }
-        });
+        String item=(String) getListAdapter().getItem(position);
+        MapsActivity.userFavourites.add(item);
+        Toast.makeText(getApplicationContext(),item+" has been added to your favourites!", Toast.LENGTH_SHORT).show();
     }
 }
