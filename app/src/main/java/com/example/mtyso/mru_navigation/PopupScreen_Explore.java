@@ -30,9 +30,10 @@ public class PopupScreen_Explore extends ListActivity {
         POIs = addToArray(loc.getAllParkingLots());
         lots = addToArray(loc.getAllPois());
 
-        CustomAdapter adapter1=new CustomAdapter(this, hallways);
-        setListAdapter(adapter1);
+        CustomAdapter adapter1 = new CustomAdapter(this, hallways);
 
+
+        setListAdapter(adapter1);
     }
 
     @Override
@@ -40,7 +41,6 @@ public class PopupScreen_Explore extends ListActivity {
         // TODO Auto-generated method stub
         super.onListItemClick(l, v, position, id);
         String item =(String) getListAdapter().getItem(position);
-
 
     }
 

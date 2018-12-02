@@ -12,20 +12,14 @@ import android.widget.TextView;
 public class CustomAdapter extends ArrayAdapter<String>{
 
     final Context c;
-    String[]values;
+    String[] values;
 
     //CONSTRUCTOR
     public CustomAdapter(Context context, String[] values) {
         super(context,R.layout.popup, values);
-
         this.c=context;
         this.values=values;
-
     }
-
-
-
-
 
 
     @Override
@@ -44,6 +38,7 @@ public class CustomAdapter extends ArrayAdapter<String>{
         String item=values[position];
 
         //DYNAMICALLY SET TEXT AND IMAGES DEPENDING ON ITEM IN ARRAY
+
 
             tv.setText(item);
             img.setImageResource(R.drawable.baseline_stars_black_24dp);

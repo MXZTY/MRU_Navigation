@@ -135,7 +135,7 @@ public class TestLocationServices {
 
     //ToDo implement test to retrieve all Hallways so they may be displayed in the bottom navigation menu.
     @Test
-    public void itCanGetAllHallways(){
+    public void itCanGetAllHallways() throws Exception {
         Hallway hall = new Hallway("EA", new LatLng(51.012276,-114.129124), "hall");
         PointOfInterest poi = new PointOfInterest("Bookstore", new LatLng(51.012613, -114.131476), "poi");
         ParkingLot lot = new ParkingLot("LotA", new LatLng(51.008836,-114.133970), "pLot", true, false);
@@ -156,9 +156,6 @@ public class TestLocationServices {
         assertEquals(2, halls.size());
         assertEquals(halls.get(0).getName(), "EA");
         assertEquals(halls.get(1).getName(), "EB");
-
-
-
 
     }
 

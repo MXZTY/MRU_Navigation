@@ -53,7 +53,14 @@ public class DataHandler1 implements Serializable {
      * @param key location instances name
      * @param value the location instance that you wish to add. (hallway, parking lot, or point of interest. )
      */
-    public void add(String key, LocationInstance value){
+    public void add(String key, LocationInstance value) throws Exception {
+        long keyValidate = hashedValue(key);
+        if(map.containsKey(keyValidate)) {
+            System.out.println(key + " This key valude is getting duplicated");
+            System.out.println(map.get(keyValidate).getName());
+            System.out.println(keyValidate + " ------------------------");
+            throw new Exception("invalid operation = duplicate key");
+        }
         this.map.put(hashedValue(key), value);
 //        System.out.println(map.size() + " ============ SIZE!!!!");
     }
@@ -107,7 +114,7 @@ public class DataHandler1 implements Serializable {
         Iterator<Long> iter = keys.iterator();
         while(iter.hasNext()){
             Long key = iter.next();
-            System.out.println( map.get(key).getName());
+//            System.out.println( map.get(key).getName());
 
         }
 
@@ -131,10 +138,10 @@ public class DataHandler1 implements Serializable {
                 } else {
                     location = new ParkingLot(obj.get("name").toString(),  new LatLng((double)obj.get("lat"), (double)obj.get("lng")), obj.get("id").toString(), false, false );
                 }
-                // add the hallway object to the hash table.
+                // add the object to the hash table.
                 add(location.getName(), location);
 //                System.out.println("ADDED:" + location.getName() + "to the table");
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 System.out.println("ERROR ADDING ITEM TO HASH MAP!!!!!");
                 e.printStackTrace();
             }
@@ -149,13 +156,11 @@ public class DataHandler1 implements Serializable {
      */
     public Long hashedValue(String word) {
         word = formatText(word);
-        long hashVal = 0;
+        long hashVal = 7;
         for (int i = 0; i < word.length(); i++) {
             hashVal = (hashVal * 31) + word.charAt(i);
         }
-        if(map.containsKey(hashVal)){
-            //
-        }
+
         if (hashVal < 0) {
             hashVal = hashVal * -1;
         }
@@ -189,7 +194,12 @@ public class DataHandler1 implements Serializable {
      * @param textToFormat
      * @return
      */
-    public String formatText(String textToFormat){ return textToFormat.replaceAll("[^A-Za-z]+", "").toLowerCase(); }
+    public String formatText(String textToFormat){
+        textToFormat = textToFormat.toLowerCase();
+        String newText = textToFormat.replaceAll("[^A-Za-z0-9]+", "").toLowerCase();
+        //System.out.println(newText + "    " + textToFormat + "  : <<< Old Text To New Text");
+        return newText;
+    }
 
 
 }
