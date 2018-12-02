@@ -25,6 +25,6 @@
         android:layout_alignTop="@+id/imageView1"
         android:layout_marginLeft="16dp"
         android:layout_toRightOf="@+id/imageView1"
-        android:text="TextView" />
+        android:text="" />
 
 </RelativeLayout>
