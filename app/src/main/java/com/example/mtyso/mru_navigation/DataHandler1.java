@@ -173,6 +173,8 @@ public class DataHandler1 implements Serializable {
         return this.getById(objectType);
     }
 
+    //public ArrayList<Hallway> getAllHallways(){return this.getAllHallways();}
+
     /**
      * This method ensures the proper formatting before hashing the string into a key value.
      * This will ensure that inconsistent input with special characters, capitals, spaces etc,

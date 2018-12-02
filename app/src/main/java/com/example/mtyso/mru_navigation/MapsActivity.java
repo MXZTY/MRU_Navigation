@@ -68,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.explore:
-                        startActivity(new Intent(MapsActivity.this, PopupScreen_Favourites.class));
+                        startActivity(new Intent(MapsActivity.this, PopupScreen_Explore.class));
                         return true;
                     case R.id.history:
                         startActivity(new Intent(MapsActivity.this, PopupScreen_History.class));
