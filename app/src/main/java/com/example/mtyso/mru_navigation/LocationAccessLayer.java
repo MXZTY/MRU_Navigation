@@ -123,7 +123,7 @@ public class LocationAccessLayer {
 
     //todo implement getAll so that the bottom nav menu can access all parking lot information and display it in the tray
     public ArrayList<LocationInstance> getAllParkingLots(){
-        return handle.getAll("plot");
+        return handle.getAll("pLot");
     }
 }
 

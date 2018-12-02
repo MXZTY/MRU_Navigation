@@ -3,6 +3,9 @@ package com.example.mtyso.mru_navigation;
 import com.google.android.gms.maps.model.LatLng;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class TestLocationServices {
@@ -33,7 +36,6 @@ public class TestLocationServices {
             DataHandler1.getInstance().add(poi.getName(), poi);
             DataHandler1.getInstance().add(lot.getName(), lot);
             assertTrue(locationData.getSize()>0);
-
             //Cannot guarantee the order of tests being completed so testing the size of the array can result in different sizes if another test has executed before this test.
             //Need to implement a different test class to assert hash map sizes.
 //            assertEquals(locationData.getSize(), 3);
@@ -134,6 +136,29 @@ public class TestLocationServices {
     //ToDo implement test to retrieve all Hallways so they may be displayed in the bottom navigation menu.
     @Test
     public void itCanGetAllHallways(){
+        Hallway hall = new Hallway("EA", new LatLng(51.012276,-114.129124), "hall");
+        PointOfInterest poi = new PointOfInterest("Bookstore", new LatLng(51.012613, -114.131476), "poi");
+        ParkingLot lot = new ParkingLot("LotA", new LatLng(51.008836,-114.133970), "pLot", true, false);
+
+        DataHandler1.getInstance().add(hall.getName(), hall);
+        DataHandler1.getInstance().add(poi.getName(), poi);
+        DataHandler1.getInstance().add(lot.getName(), lot);
+
+        LocationAccessLayer loc = new LocationAccessLayer();
+        ArrayList<LocationInstance> halls = loc.getAllHalls();
+        assertNotNull(halls);
+        System.out.println(halls.get(0).getName());
+        assertEquals(1, halls.size());
+
+        Hallway hall2 = new Hallway("EB", new LatLng(51.010972,-114.131208), "hall");
+        DataHandler1.getInstance().add(hall2.getName(), hall2);
+        halls = loc.getAllHalls();
+        assertEquals(2, halls.size());
+        assertEquals(halls.get(0).getName(), "EA");
+        assertEquals(halls.get(1).getName(), "EB");
+
+
+
 
     }
 

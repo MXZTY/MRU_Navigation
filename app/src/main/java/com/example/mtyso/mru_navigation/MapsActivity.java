@@ -31,6 +31,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     //widgets
     private EditText mSearchText;
     private BottomNavigationView mMainNav;
+    private boolean pinSet = false;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -119,34 +121,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        mMap.setIndoorEnabled(true);
-        mMap.setBuildingsEnabled(true);
-        mMap.getUiSettings().setScrollGesturesEnabled(false);
+//        mMap.setIndoorEnabled(true);
+//        mMap.setBuildingsEnabled(true);
+//        mMap.getUiSettings().setScrollGesturesEnabled(false);
+        mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         mMap.setMaxZoomPreference(18f);
         mMap.setMinZoomPreference(15f);
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(51.012374, -114.131309)).zoom(16.35f).bearing(223.5f).tilt(40).build();
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(51.012374, -114.131309)).zoom(16.5f).build();
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 
-        try {
-            // Customise the styling of the base map using a JSON object defined
-            // in a raw resource file.
-            boolean success = googleMap.setMapStyle(
-                    MapStyleOptions.loadRawResourceStyle(
-                            this, R.raw.style_map));
-            if (!success) {
-                Log.e("parseError", "Style parsing failed.");
-            }
-        } catch (Resources.NotFoundException e) {
-            Log.e("no style", "Can't find style. Error: ", e);
-        }
+//        try {
+//            // Customise the styling of the base map using a JSON object defined
+//            // in a raw resource file.
+//            boolean success = googleMap.setMapStyle(
+//                    MapStyleOptions.loadRawResourceStyle(
+//                            this, R.raw.style_map));
+//            if (!success) {
+//                Log.e("parseError", "Style parsing failed.");
+//            }
+//        } catch (Resources.NotFoundException e) {
+//            Log.e("no style", "Can't find style. Error: ", e);
+//        }
     }
 
     /**
      * This method is run after the map is ready to begin listening for user input when the user presses enter
      */
     private void init(){
-        Log.d("init", "Initializing");
         mSearchText.setOnEditorActionListener( new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -165,11 +167,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         if(locations.validateUserInput(searchText)){
                             // if it is a valid location, unfocus from the users locaiton and add a new marker for the returned location instance.
                             focus = false;
+//                                mMap.clear();
+//                                locationListener.onLocationChanged(location);
                             mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
 //                            LatLng moveTo = new LatLng(locations.getLocation(searchText).getLatitude(), locations.getLocation(searchText).getLongitude());
 //                            mMap.moveCamera(CameraUpdateFactory.newLatLng(moveTo));
-                        } else {
-                            //should display error somehow (red outline or something)
                         }
                     } catch (Exception e) {
                         //TODO handle invalid input here
@@ -180,7 +182,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
-
 
     /**
      * This method requests the users location through the implementation of a locationListener sub class
@@ -194,15 +195,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.center(latLng);
-                circleOptions.radius(2);
+                circleOptions.radius(2.5);
                 circleOptions.fillColor(Color.RED);
                 circleOptions.strokeColor(Color.RED);
                 circleOptions.strokeWidth(7);
                 mMap.addCircle(circleOptions);
 
-                if(focus) {
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, (float) 17.25));
-                }
                 init();
 
             }

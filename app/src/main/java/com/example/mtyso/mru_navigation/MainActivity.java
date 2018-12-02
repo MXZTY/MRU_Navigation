@@ -27,9 +27,12 @@ public class MainActivity extends AppCompatActivity {
 //        String[] parkingLotArray = getResources().getStringArray(R.array.parkingLots);
 
         service.buildTable(hallArray);
+        System.out.println("SIZE AFTER HALLWAYS ADDED!    " + service.getSize());
         service.buildTable(poiArray);
+        System.out.println("SIZE AFTER POI ADDED!    " + service.getSize());
         service.buildTable(parkArray);
-        service.printTable();
+        System.out.println("SIZE AFTER lots ADDED!    " + service.getSize());
+
         setContentView( R.layout.activity_home_screen );
     }
 

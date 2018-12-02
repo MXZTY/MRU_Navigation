@@ -55,6 +55,7 @@ public class DataHandler1 implements Serializable {
      */
     public void add(String key, LocationInstance value){
         this.map.put(hashedValue(key), value);
+//        System.out.println(map.size() + " ============ SIZE!!!!");
     }
 
     /**
@@ -85,10 +86,10 @@ public class DataHandler1 implements Serializable {
      * @return the values that share the id that was passed in to the method.
      */
     private ArrayList<LocationInstance> getById(String id){
-        ArrayList<LocationInstance> locations = new ArrayList<LocationInstance>();
+        ArrayList<LocationInstance> locations = new ArrayList();
         int i = 0;
         for(LocationInstance location : map.values()){
-            if(location.getID() == id){
+            if(location.getID().equalsIgnoreCase(id)){
                 locations.add( location);
                 i++;
             }
@@ -106,7 +107,8 @@ public class DataHandler1 implements Serializable {
         Iterator<Long> iter = keys.iterator();
         while(iter.hasNext()){
             Long key = iter.next();
-            String value = map.get(key).getName();
+            System.out.println( map.get(key).getName());
+
         }
 
     }
@@ -131,7 +133,9 @@ public class DataHandler1 implements Serializable {
                 }
                 // add the hallway object to the hash table.
                 add(location.getName(), location);
+//                System.out.println("ADDED:" + location.getName() + "to the table");
             } catch (JSONException e) {
+                System.out.println("ERROR ADDING ITEM TO HASH MAP!!!!!");
                 e.printStackTrace();
             }
         }
@@ -148,6 +152,9 @@ public class DataHandler1 implements Serializable {
         long hashVal = 0;
         for (int i = 0; i < word.length(); i++) {
             hashVal = (hashVal * 31) + word.charAt(i);
+        }
+        if(map.containsKey(hashVal)){
+            //
         }
         if (hashVal < 0) {
             hashVal = hashVal * -1;
