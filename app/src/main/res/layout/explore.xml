@@ -14,24 +14,26 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:onClick="onClickHallBtn"
-            android:text="Hallways" />
+            android:onClick="onClick" android:tag="hall"
+            android:text="@string/hallways"
+            android:layout_alignParentEnd="true" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:onClick="onClickPOIBtn"
-            android:text="POI" />
+            android:onClick="onClick" android:tag="poi"
+            android:text="@string/poi"
+            android:layout_alignParentStart="true" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:onClick="onClickPlotBtn"
-            android:text="Parking Lots" />
+            android:onClick="onClick" android:tag="lot"
+            android:text="@string/parking_lots" />
     </RelativeLayout>
 
 
@@ -41,7 +43,6 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:drawSelectorOnTop="false"
-
         />
 </LinearLayout>
 

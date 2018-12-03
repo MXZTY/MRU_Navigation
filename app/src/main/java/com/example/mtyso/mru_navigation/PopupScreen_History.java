@@ -6,10 +6,16 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 
-public class PopupScreen_History extends ListActivity {
+import static com.example.mtyso.mru_navigation.MapsActivity.mMap;
+import static com.example.mtyso.mru_navigation.MapsActivity.userHistory;
 
+public class PopupScreen_History extends ListActivity {
+    LocationAccessLayer loc = new LocationAccessLayer();
     String[] languages = new String[MapsActivity.userHistory.size()];
 
 
@@ -19,7 +25,6 @@ public class PopupScreen_History extends ListActivity {
         //  setContentView(R.layout.activity_main);
         for(int i = 0; i < MapsActivity.userHistory.size(); i++){
             languages[i] =  MapsActivity.userHistory.get(i);
-
         }
         CustomAdapter adapter=new CustomAdapter(this, languages);
         setListAdapter(adapter);
@@ -27,11 +32,38 @@ public class PopupScreen_History extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        // TODO Auto-generated method stub
-        super.onListItemClick(l, v, position, id);
+       super.onListItemClick(l, v, position, id);
 
         String item=(String) getListAdapter().getItem(position);
+            try {
+                LocationInstance destination = loc.getLocation(item);
+                mMap.addMarker(new MarkerOptions().position(destination.getLocation()).title(destination.getName()));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(destination.getLocation()));
+                userHistory.add(destination.getName());
+                onBackPressed();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }
+
+    public void addToFavorites(View view) {
+        View parentRow = (View) view.getParent();
+        ListView list = (ListView) parentRow.getParent();
+        final int position = list.getPositionForView(parentRow);
+        System.out.println(position);
+        String item=(String) getListAdapter().getItem(position);
+        try {
+            LocationInstance destination = loc.getLocation(item);
+            mMap.addMarker(new MarkerOptions().position(destination.getLocation()).title(destination.getName()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(destination.getLocation()));
+            onBackPressed();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         MapsActivity.userFavourites.add(item);
         Toast.makeText(getApplicationContext(),item+" has been added to your favourites!", Toast.LENGTH_SHORT).show();
+
     }
+
 }

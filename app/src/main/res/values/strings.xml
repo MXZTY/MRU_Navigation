@@ -9,5 +9,9 @@
     <string name="nav_Explore">Explore</string>
     <string name="nav_myLocation">My Location</string>
     <string name="classroom">Hallway B</string>
+    <string name="poi">POI</string>
+    <string name="hallways">Hallways</string>
+    <string name="parking_lots">Parking Lots</string>
+    <string name="starbutton">starButton</string>
 
 </resources>

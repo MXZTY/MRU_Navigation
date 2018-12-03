@@ -1,27 +1,15 @@
 package com.example.mtyso.mru_navigation;
 
 import android.app.ListActivity;
-import android.location.Location;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Map;
-
 import static com.example.mtyso.mru_navigation.MapsActivity.mMap;
 import static com.example.mtyso.mru_navigation.MapsActivity.userHistory;
 import java.util.Arrays;
@@ -99,34 +87,52 @@ public class PopupScreen_Explore extends ListActivity {
 
     }
     
-        public void onClickHallBtn(View v){
-            adapter=new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1,
-                    hallways);
-            setListAdapter(adapter);
-        }
+//        public void onClickHallBtn(View v){
+//            adapter=new ArrayAdapter<String>(this,
+//                    android.R.layout.simple_list_item_1,
+//                    hallways);
+//            setListAdapter(adapter);
+//        }
+//
+//    public void onClickPOIBtn(View v){
+//        adapter=new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1,
+//                POIs);
+//        setListAdapter(adapter);
+//    }
+//
+//    public void onClickPlotBtn(View v){
+//        adapter=new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1,
+//                lots);
+//        setListAdapter(adapter);
+//    }
 
-    public void onClickPOIBtn(View v){
+//        public String[] addToArray(ArrayList<LocationInstance> val){
+//       String[] arr = new String[val.size()];
+//        for(int i=0; i<val.size();i++){
+//            arr[i] = val.get(i).getName();
+//        }
+//        return arr;
+//    }
+
+    public void onClick(View view) {
+        String tag = view.getTag().toString();
+        String[] array;
+        if(tag.equals("hall")){
+            array = hallways;
+        } else if( tag.equals("poi")){
+            array = POIs;
+        } else {
+            array = lots;
+        }
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                POIs);
+                array);
         setListAdapter(adapter);
-    }
 
-    public void onClickPlotBtn(View v){
-        adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                lots);
-        setListAdapter(adapter);
-    }
 
-        public String[] addToArray(ArrayList<LocationInstance> val){
-       String[] arr = new String[val.size()];
-        for(int i=0; i<val.size();i++){
-            arr[i] = val.get(i).getName();
-        }
-        return arr;
-    }
 
+    }
 }
 

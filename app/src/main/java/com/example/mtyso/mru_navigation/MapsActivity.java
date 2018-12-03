@@ -20,6 +20,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,7 +42,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public static GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
-    private boolean focus = true;
 
     //need an array for storing the users history so it can be accessed for the userHistoryTab
     public static ArrayList<String> userHistory = new ArrayList<>();
@@ -122,9 +122,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-//        mMap.setIndoorEnabled(true);
-//        mMap.setBuildingsEnabled(true);
-//        mMap.getUiSettings().setScrollGesturesEnabled(false);
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         mMap.setMaxZoomPreference(18f);
         mMap.setMinZoomPreference(15f);
@@ -164,17 +161,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     try {
                         String searchText = mSearchText.getText().toString();
                         if (!searchText.equals("")) {
-                            //Add users search text to the search history.
-                            userHistory.add(mSearchText.getText().toString());
                             if (locations.validateUserInput(searchText)) {
-                                // if it is a valid location, unfocus from the users locaiton and add a new marker for the returned location instance.
-                                focus = false;
-//                                mMap.clear();
-//                                locationListener.onLocationChanged(location);
+                                //Add users search text to the search history.
+                                userHistory.add(mSearchText.getText().toString());
                                 LocationInstance loc = locations.getLocation(searchText);
                                 mMap.addMarker(new MarkerOptions().position(loc.getLocation()).title(loc.getName()));
-//                            LatLng moveTo = new LatLng(locations.getLocation(searchText).getLatitude(), locations.getLocation(searchText).getLongitude());
-//                            mMap.moveCamera(CameraUpdateFactory.newLatLng(moveTo));
+                                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc.getLocation()));
+//                                userHistory.add(loc.getName());
                             }
                         }
                     } catch (Exception e) {
@@ -204,6 +197,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 circleOptions.strokeColor(Color.BLUE);
                 circleOptions.strokeWidth(7);
                 mMap.addCircle(circleOptions);
+
 
                 init();
 
@@ -243,4 +237,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+
+
 }
