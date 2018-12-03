@@ -22,9 +22,9 @@ import java.util.ArrayList;
 public class PopupScreen_Explore extends ListActivity {
     private LocationAccessLayer loc = new LocationAccessLayer();
     //public ArrayList<LocationInstance> tmp;
-    public String[] hallways = new String[40];
-    public String[] POIs = new String[40];
-    public String[] lots = new String[40];
+    public String[] hallways = new String[loc.getAllHalls().size()];
+    public String[] POIs = new String[loc.getAllPois().size()];
+    public String[] lots = new String[loc.getAllParkingLots().size()];
     ArrayAdapter<String> adapter;
 
     @Override
