@@ -49,11 +49,11 @@ public class PopupScreen_Explore extends ListActivity {
                 try {
                     obj = new JSONObject(json);
                     if(obj.get("id").toString().equalsIgnoreCase("hall")){
-                        this.hallways[i] = obj.get("name").toString();
+                        this.hallways[i] = obj.get("name").toString().replaceAll("_"," ");
                     } else if(obj.get("id").toString().equalsIgnoreCase("poi")){
-                        this.POIs[i] = obj.get("name").toString();
+                        this.POIs[i] = obj.get("name").toString().replaceAll("_"," ");;
                     } else {
-                        this.lots[i] = obj.get("name").toString();
+                        this.lots[i] = obj.get("name").toString().replaceAll("_"," ");;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
