@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -18,24 +22,46 @@ import java.util.ArrayList;
 public class PopupScreen_Explore extends ListActivity {
     private LocationAccessLayer loc = new LocationAccessLayer();
     //public ArrayList<LocationInstance> tmp;
-    public String[] hallways;
-    public String[] POIs;
-    public String[] lots;
-    ArrayList<LocationInstance> h;
-    ArrayList<LocationInstance> p;
-    ArrayList<LocationInstance> l;
+    public String[] hallways = new String[40];
+    public String[] POIs = new String[40];
+    public String[] lots = new String[40];
     ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hallways = addToArray(loc.getAllHalls());
-        POIs = addToArray(loc.getAllPois());
-        lots = addToArray(loc.getAllParkingLots());
+        // Build an array of hallways from the stored json strings.
+        String[] JSONhallway = getResources().getStringArray(R.array.hallwayLocations);
+        String[] JSONPOIs = getResources().getStringArray(R.array.poi);
+        String[] JSONlots = getResources().getStringArray(R.array.pLots);
+
+        buildOutputLists(JSONhallway);
+        buildOutputLists(JSONPOIs);
+        buildOutputLists(JSONlots);
         setContentView(R.layout.explore);
 
         }
 
+        public void buildOutputLists(String[] listToConvert){
+            int i=0;
+            for (String json : listToConvert){
+                JSONObject obj;
+                try {
+                    obj = new JSONObject(json);
+                    if(obj.get("id").toString().equalsIgnoreCase("hall")){
+                        this.hallways[i] = obj.get("name").toString();
+                    } else if(obj.get("id").toString().equalsIgnoreCase("poi")){
+                        this.POIs[i] = obj.get("name").toString();
+                    } else {
+                        this.lots[i] = obj.get("name").toString();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                i++;
+            }
+
+        }
         //CustomAdapter adapter1=new CustomAdapter(this, hallways);
         //setListAdapter(adapter1);
 

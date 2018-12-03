@@ -195,9 +195,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 CircleOptions circleOptions = new CircleOptions();
                 circleOptions.center(latLng);
-                circleOptions.radius(2.5);
-                circleOptions.fillColor(Color.RED);
-                circleOptions.strokeColor(Color.RED);
+                circleOptions.radius(4);
+                circleOptions.fillColor(Color.BLUE);
+                circleOptions.strokeColor(Color.BLUE);
                 circleOptions.strokeWidth(7);
                 mMap.addCircle(circleOptions);
 
