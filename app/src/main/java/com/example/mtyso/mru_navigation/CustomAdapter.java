@@ -2,6 +2,7 @@ package com.example.mtyso.mru_navigation;
 
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class CustomAdapter extends ArrayAdapter<String>{
 
         //DECLARE FIELDS CONTAINED IN OUR LAYOUT
         TextView tv=(TextView) row.findViewById(R.id.textView1);
-        RadioButton radio=(RadioButton) row.findViewById(R.id.imageView1);
+        ImageView img =(ImageView) row.findViewById(R.id.imageView1);
 
         //GET AN ITEM FROM ARRAY
         String item=values[position];
@@ -42,7 +43,7 @@ public class CustomAdapter extends ArrayAdapter<String>{
 
 
             tv.setText(item);
-            
+            img.setImageResource(R.drawable.baseline_stars_black_24dp);
 
         return row;
     }
