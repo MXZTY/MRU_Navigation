@@ -40,11 +40,8 @@ public class CustomAdapter extends ArrayAdapter<String>{
         String item=values[position];
 
         //DYNAMICALLY SET TEXT AND IMAGES DEPENDING ON ITEM IN ARRAY
-
-
             tv.setText(item);
             img.setImageResource(R.drawable.baseline_stars_black_24dp);
-
         return row;
     }
 
