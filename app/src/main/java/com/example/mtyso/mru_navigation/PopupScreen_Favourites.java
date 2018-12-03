@@ -36,4 +36,8 @@ public class PopupScreen_Favourites extends ListActivity {
         super.onListItemClick(l, v, position, id);
         String item=(String) getListAdapter().getItem(position);
     }
+
+    public void addToFavorites(View view) {
+        ///
+    }
 }
