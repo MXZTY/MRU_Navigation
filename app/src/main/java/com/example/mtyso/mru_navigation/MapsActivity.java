@@ -163,17 +163,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     //Call getUserInput to process the user input recorded in mSearchText global variable.
                     try {
                         String searchText = mSearchText.getText().toString();
-                        //Add users search text to the search history.
-                        userHistory.add(mSearchText.getText().toString());
-                        if(locations.validateUserInput(searchText)){
-                            // if it is a valid location, unfocus from the users locaiton and add a new marker for the returned location instance.
-                            focus = false;
+                        if (!searchText.equals("")) {
+                            //Add users search text to the search history.
+                            userHistory.add(mSearchText.getText().toString());
+                            if (locations.validateUserInput(searchText)) {
+                                // if it is a valid location, unfocus from the users locaiton and add a new marker for the returned location instance.
+                                focus = false;
 //                                mMap.clear();
 //                                locationListener.onLocationChanged(location);
-                            LocationInstance loc = locations.getLocation(searchText);
-                            mMap.addMarker(new MarkerOptions().position(loc.getLocation()).title(loc.getName()));
+                                LocationInstance loc = locations.getLocation(searchText);
+                                mMap.addMarker(new MarkerOptions().position(loc.getLocation()).title(loc.getName()));
 //                            LatLng moveTo = new LatLng(locations.getLocation(searchText).getLatitude(), locations.getLocation(searchText).getLongitude());
 //                            mMap.moveCamera(CameraUpdateFactory.newLatLng(moveTo));
+                            }
                         }
                     } catch (Exception e) {
                         //TODO handle invalid input here

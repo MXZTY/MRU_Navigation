@@ -91,6 +91,7 @@ public class PopupScreen_Explore extends ListActivity {
             mMap.addMarker(new MarkerOptions().position(destination.getLocation()).title(destination.getName()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(destination.getLocation()));
             userHistory.add(destination.getName());
+            onBackPressed();
         } catch (Exception e) {
             e.printStackTrace();
         }
