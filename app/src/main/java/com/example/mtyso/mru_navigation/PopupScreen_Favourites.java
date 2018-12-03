@@ -38,6 +38,6 @@ public class PopupScreen_Favourites extends ListActivity {
     }
 
     public void addToFavorites(View view) {
-        ///
+       //doNothing
     }
 }
