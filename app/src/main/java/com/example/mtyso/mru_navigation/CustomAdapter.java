@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class CustomAdapter extends ArrayAdapter<String>{
@@ -32,7 +33,7 @@ public class CustomAdapter extends ArrayAdapter<String>{
 
         //DECLARE FIELDS CONTAINED IN OUR LAYOUT
         TextView tv=(TextView) row.findViewById(R.id.textView1);
-        ImageView img=(ImageView) row.findViewById(R.id.imageView1);
+        RadioButton radio=(RadioButton) row.findViewById(R.id.imageView1);
 
         //GET AN ITEM FROM ARRAY
         String item=values[position];
@@ -41,7 +42,7 @@ public class CustomAdapter extends ArrayAdapter<String>{
 
 
             tv.setText(item);
-            img.setImageResource(R.drawable.baseline_stars_black_24dp);
+            
 
         return row;
     }
