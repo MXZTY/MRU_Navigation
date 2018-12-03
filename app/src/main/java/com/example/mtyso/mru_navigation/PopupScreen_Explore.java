@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 
 
 public class PopupScreen_Explore extends ListActivity {
@@ -38,8 +38,14 @@ public class PopupScreen_Explore extends ListActivity {
         buildOutputLists(JSONhallway);
         buildOutputLists(JSONPOIs);
         buildOutputLists(JSONlots);
+        Arrays.sort(POIs);
+        Arrays.sort(lots);
+        Arrays.sort(hallways);
         setContentView(R.layout.explore);
-
+        adapter=new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                POIs);
+        setListAdapter(adapter);
         }
 
         public void buildOutputLists(String[] listToConvert){
