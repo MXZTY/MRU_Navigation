@@ -10,12 +10,20 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Map;
+
+import static com.example.mtyso.mru_navigation.MapsActivity.mMap;
+import static com.example.mtyso.mru_navigation.MapsActivity.userHistory;
 import java.util.Arrays;
 
 
@@ -78,7 +86,14 @@ public class PopupScreen_Explore extends ListActivity {
         // TODO Auto-generated method stub
         super.onListItemClick(l, v, position, id);
         String item =(String) getListAdapter().getItem(position);
-
+        try {
+            LocationInstance destination = loc.getLocation(item);
+            mMap.addMarker(new MarkerOptions().position(destination.getLocation()).title(destination.getName()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(destination.getLocation()));
+            userHistory.add(destination.getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
     

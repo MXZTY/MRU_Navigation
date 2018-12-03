@@ -10,6 +10,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -37,7 +38,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-    private GoogleMap mMap;
+    public static GoogleMap mMap;
     private LocationManager locationManager;
     private LocationListener locationListener;
     private boolean focus = true;
@@ -169,7 +170,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             focus = false;
 //                                mMap.clear();
 //                                locationListener.onLocationChanged(location);
-                            mMap.addMarker(new MarkerOptions().position(locations.getLocation(searchText).getLocation()).title(getString(R.string.classroom)));
+                            LocationInstance loc = locations.getLocation(searchText);
+                            mMap.addMarker(new MarkerOptions().position(loc.getLocation()).title(loc.getName()));
 //                            LatLng moveTo = new LatLng(locations.getLocation(searchText).getLatitude(), locations.getLocation(searchText).getLongitude());
 //                            mMap.moveCamera(CameraUpdateFactory.newLatLng(moveTo));
                         }
