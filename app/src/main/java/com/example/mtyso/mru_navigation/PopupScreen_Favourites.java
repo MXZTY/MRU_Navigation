@@ -11,10 +11,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 
-public class PopupScreen_Favourites extends ListActivity {
+import static com.example.mtyso.mru_navigation.MapsActivity.mMap;
+import static com.example.mtyso.mru_navigation.MapsActivity.userHistory;
 
+public class PopupScreen_Favourites extends ListActivity {
+    LocationAccessLayer loc = new LocationAccessLayer();
     String[] favs = new String[MapsActivity.userFavourites.size()];
 
 
@@ -32,12 +38,18 @@ public class PopupScreen_Favourites extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        // TODO Auto-generated method stub
         super.onListItemClick(l, v, position, id);
-        String item=(String) getListAdapter().getItem(position);
-    }
 
-    public void addToFavorites(View view) {
-       //doNothing
+        String item=(String) getListAdapter().getItem(position);
+        item = item.replaceAll("_"," ");
+        try {
+            LocationInstance destination = loc.getLocation(item);
+            mMap.addMarker(new MarkerOptions().position(destination.getLocation()).title(destination.getName()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(destination.getLocation()));
+            if(!userHistory.contains(item)){userHistory.add(item);};
+            onBackPressed();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -75,46 +75,18 @@ public class PopupScreen_Explore extends ListActivity {
         // TODO Auto-generated method stub
         super.onListItemClick(l, v, position, id);
         String item =(String) getListAdapter().getItem(position);
+        item = item.replaceAll("_"," ");
         try {
             LocationInstance destination = loc.getLocation(item);
             mMap.addMarker(new MarkerOptions().position(destination.getLocation()).title(destination.getName()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(destination.getLocation()));
-            userHistory.add(destination.getName());
+            if(!userHistory.contains(item)){userHistory.add(item);};
             onBackPressed();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
-    
-//        public void onClickHallBtn(View v){
-//            adapter=new ArrayAdapter<String>(this,
-//                    android.R.layout.simple_list_item_1,
-//                    hallways);
-//            setListAdapter(adapter);
-//        }
-//
-//    public void onClickPOIBtn(View v){
-//        adapter=new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1,
-//                POIs);
-//        setListAdapter(adapter);
-//    }
-//
-//    public void onClickPlotBtn(View v){
-//        adapter=new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1,
-//                lots);
-//        setListAdapter(adapter);
-//    }
-
-//        public String[] addToArray(ArrayList<LocationInstance> val){
-//       String[] arr = new String[val.size()];
-//        for(int i=0; i<val.size();i++){
-//            arr[i] = val.get(i).getName();
-//        }
-//        return arr;
-//    }
 
     public void onClick(View view) {
         String tag = view.getTag().toString();

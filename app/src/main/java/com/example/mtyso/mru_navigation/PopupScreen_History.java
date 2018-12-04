@@ -35,11 +35,12 @@ public class PopupScreen_History extends ListActivity {
        super.onListItemClick(l, v, position, id);
 
         String item=(String) getListAdapter().getItem(position);
+        item = item.replaceAll("_"," ");
             try {
                 LocationInstance destination = loc.getLocation(item);
                 mMap.addMarker(new MarkerOptions().position(destination.getLocation()).title(destination.getName()));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(destination.getLocation()));
-                userHistory.add(destination.getName());
+                if(!userHistory.contains(item)){userHistory.add(item);};
                 onBackPressed();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -52,18 +53,21 @@ public class PopupScreen_History extends ListActivity {
         final int position = list.getPositionForView(parentRow);
         System.out.println(position);
         String item=(String) getListAdapter().getItem(position);
+        item = item.replaceAll("_"," ");
         try {
             LocationInstance destination = loc.getLocation(item);
             mMap.addMarker(new MarkerOptions().position(destination.getLocation()).title(destination.getName()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(destination.getLocation()));
             onBackPressed();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-        MapsActivity.userFavourites.add(item);
-        Toast.makeText(getApplicationContext(),item+" has been added to your favourites!", Toast.LENGTH_SHORT).show();
-
+        if(MapsActivity.userFavourites.contains(item)){
+            //dont add, already in favorites
+        } else {
+            MapsActivity.userFavourites.add(item);
+            Toast.makeText(getApplicationContext(), item + " has been added to your favourites!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
